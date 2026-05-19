@@ -1,0 +1,1303 @@
+[
+  {
+    "type": "behavior",
+    "text": "Which ghost is stunned by a smudge stick for 180 seconds \u2014 twice as long as any other?",
+    "detail": "Burn a smudge near its room and you get an unusually long quiet period.",
+    "options": [
+      "Wraith",
+      "Spirit",
+      "Yurei",
+      "Shade"
+    ],
+    "answer": 1,
+    "explain": "<strong>Spirit</strong> has no offensive abilities \u2014 its defining feature is its weakness to smudge sticks. A smudge stun lasts <span class='tag'>180 s</span> for a Spirit versus <span class='tag'>90 s</span> for the average ghost. If you smudge and the ghost goes silent for 3 minutes, you've almost certainly got a Spirit."
+  },
+  {
+    "type": "tell",
+    "text": "You smudge a ghost in its room. It doesn't hunt again for over three minutes. Most likely?",
+    "detail": "Standard smudge silence is 90 seconds. This was much longer.",
+    "options": [
+      "Spirit",
+      "Wraith",
+      "Phantom",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Spirit</strong>'s smudge stun lasts <span class='tag'>180 s</span>. It's one of the cleanest identification tests in the game \u2014 if you can spare a smudge in the ghost's room and time the silence, the answer comes back fast."
+  },
+  {
+    "type": "behavior",
+    "text": "You place salt in a doorway the ghost has crossed multiple times. The salt remains perfectly undisturbed. Which ghost?",
+    "detail": "Footstep sounds confirmed it walked over the salt \u2014 but nothing was kicked up.",
+    "options": [
+      "Phantom",
+      "Wraith",
+      "Yurei",
+      "Goryo"
+    ],
+    "answer": 1,
+    "explain": "<strong>Wraith</strong> is the only ghost that never disturbs salt. It can fly/teleport through environments, bypassing physical materials. Salt placed in a confirmed patrol path remaining untouched is one of the cleanest Wraith confirmations in the game."
+  },
+  {
+    "type": "tell",
+    "text": "EMF readings keep appearing far from the ghost's favorite room, near random players. The ghost room is on the second floor; the readings are in the basement.",
+    "detail": "It seems to be appearing in two places at once.",
+    "options": [
+      "Wraith",
+      "Twins",
+      "Banshee",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Wraith</strong> can teleport directly adjacent to a random player, leaving an EMF reading at the new location. Far-from-room EMF spikes near players are a Wraith hallmark \u2014 keep a crucifix on you, not on the floor."
+  },
+  {
+    "type": "behavior",
+    "text": "You snap a photo of the manifesting ghost. It vanishes from sight but the event keeps running \u2014 singing continues, lights still flicker.",
+    "detail": "The ghost is gone but the chaos isn't.",
+    "options": [
+      "Phantom",
+      "Oni",
+      "Yurei",
+      "Banshee"
+    ],
+    "answer": 0,
+    "explain": "<strong>Phantom</strong> disappears visually when photographed, but the surrounding ghost event keeps playing out. It also stays invisible longer than other ghosts during hunts, making it especially hard to loop visually."
+  },
+  {
+    "type": "tell",
+    "text": "Looking directly at the ghost causes your sanity to plummet much faster than usual. Which ghost?",
+    "detail": "Eye contact is shockingly expensive.",
+    "options": [
+      "Phantom",
+      "Yurei",
+      "Demon",
+      "Moroi"
+    ],
+    "answer": 0,
+    "explain": "<strong>Phantom</strong> drains <span class='tag'>0.5%</span> sanity per second when you look at it during a hunt or event, well above the standard rate. The flash-then-vanish photo trick is the textbook counter; otherwise, avert your gaze."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost throws multiple objects from a pile simultaneously \u2014 and your sanity tanks every time it does.",
+    "detail": "Several small items have just left the table in one motion.",
+    "options": [
+      "Poltergeist",
+      "Oni",
+      "Yurei",
+      "Raiju"
+    ],
+    "answer": 0,
+    "explain": "<strong>Poltergeist</strong>'s signature is the multi-throw. It can hurl multiple objects at once and drains sanity from nearby players each time. To test, pile several small items in the ghost room \u2014 Poltergeists love a target-rich environment."
+  },
+  {
+    "type": "tell",
+    "text": "Compared to other ghosts, this one launches objects with much more force \u2014 across the room rather than just nudging them.",
+    "detail": "Standard ghosts throw with force value 1\u20133. This one throws harder.",
+    "options": [
+      "Oni",
+      "Poltergeist",
+      "Raiju",
+      "Hantu"
+    ],
+    "answer": 1,
+    "explain": "<strong>Poltergeist</strong> applies <span class='tag'>force 2\u20136</span> on thrown objects versus the standard 1\u20133, and during hunts it throws every 0.5 s rather than rolling a 50% chance per interaction. If small objects are flying across rooms with serious velocity, suspect a Poltergeist."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost is locked on one player and won't leave them alone. Other teammates can walk right past during a hunt unbothered.",
+    "detail": "It fixated on a single investigator the moment you stepped inside.",
+    "options": [
+      "Banshee",
+      "Phantom",
+      "Mare",
+      "Wraith"
+    ],
+    "answer": 0,
+    "explain": "<strong>Banshee</strong> picks one target at the start of the contract and only hunts based on that player's sanity, not the team average. Non-targets can move freely around the ghost during a chase \u2014 a unique behavior used by experienced teams to bait safely."
+  },
+  {
+    "type": "tell",
+    "text": "The Parabolic Microphone at the front of the location picks up a piercing scream \u2014 exclusive to one ghost type.",
+    "detail": "It's not a paranormal whisper or growl \u2014 it's a clean scream.",
+    "options": [
+      "Banshee",
+      "Wraith",
+      "Myling",
+      "Onryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Banshee</strong> has a unique scream that the Parabolic Microphone has a roughly <span class='tag'>33%</span> chance of picking up. No other ghost produces this sound. If your mic captures one, you can confirm the ghost type without even setting foot inside."
+  },
+  {
+    "type": "sanity",
+    "text": "Three teammates are at 80% sanity, one is at 30%. The ghost only hunts when targeting the low-sanity player. Which ghost?",
+    "detail": "Team sanity isn't the trigger \u2014 one specific player's is.",
+    "options": [
+      "Demon",
+      "Banshee",
+      "Shade",
+      "Yokai"
+    ],
+    "answer": 1,
+    "explain": "<strong>Banshee</strong> uses only its <em>target's</em> sanity for hunt calculations, ignoring the team average entirely. If hunts only start when one specific player drops low, you're hunting a Banshee."
+  },
+  {
+    "type": "behavior",
+    "text": "When the breaker is on, this ghost is dramatically faster. It will never, under any circumstances, switch the breaker off itself.",
+    "detail": "Cut the power and it slows immediately.",
+    "options": [
+      "Hantu",
+      "Jinn",
+      "Raiju",
+      "Oni"
+    ],
+    "answer": 1,
+    "explain": "<strong>Jinn</strong> draws strength from electricity. With the breaker on and line of sight from at least 3 m away, it accelerates to <span class='tag'>2.5 m/s</span>. It has a hard rule against turning the breaker off itself, so if you witness the ghost cutting power, rule out Jinn immediately."
+  },
+  {
+    "type": "tell",
+    "text": "An EMF reader left on the fuse box keeps firing even when no one is near it. Sanity also drops sharply for anyone standing close to the ghost room.",
+    "detail": "The breaker is becoming an unexpected hotspot.",
+    "options": [
+      "Jinn",
+      "Raiju",
+      "Onryo",
+      "Wraith"
+    ],
+    "answer": 0,
+    "explain": "<strong>Jinn</strong> can zap a nearby player for an instant <span class='tag'>25%</span> sanity drop, which generates an EMF reading at the fuse box. Leaving an EMF reader there is a clean Jinn-detection trick."
+  },
+  {
+    "type": "sanity",
+    "text": "You're at 55% sanity. Lights are off. The ghost hunts. Lights on, it didn't hunt until you dropped below 40%. Which ghost?",
+    "detail": "Hunt threshold seems to swing with the lighting.",
+    "options": [
+      "Mare",
+      "Yurei",
+      "Shade",
+      "Onryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Mare</strong>'s threshold is <span class='tag'>60% with lights off</span> and <span class='tag'>40% with lights on</span>. Keeping the breaker on and rooms lit is the single best counter \u2014 Mare also turns off lights you've just switched on within 4 m."
+  },
+  {
+    "type": "behavior",
+    "text": "A ghost that actively turns lights OFF, prefers dark rooms during roaming, and will never turn a light on.",
+    "detail": "Walk into the room and the bulb pops out.",
+    "options": [
+      "Mare",
+      "Hantu",
+      "Goryo",
+      "Shade"
+    ],
+    "answer": 0,
+    "explain": "<strong>Mare</strong> prefers darkness. It can switch off any light you turned on within 4 m of itself, with a 10-second cooldown on the ability. To test, turn on lights in adjacent rooms but leave one dark \u2014 the Mare should drift toward the unlit one."
+  },
+  {
+    "type": "tell",
+    "text": "A hunt starts. With line of sight, the ghost is impossibly fast \u2014 3 m/s. The moment you hide, footsteps slow to a crawl.",
+    "detail": "Speed extremes: there's no middle setting.",
+    "options": [
+      "Revenant",
+      "Hantu",
+      "Deogen",
+      "Aswang"
+    ],
+    "answer": 0,
+    "explain": "<strong>Revenant</strong>'s defining mechanic is the speed contrast \u2014 <span class='tag'>3 m/s</span> when it sees or hears you, <span class='tag'>1 m/s</span> the moment you hide. The change is dramatic and unmistakable. The correct play is always: hide immediately, never run."
+  },
+  {
+    "type": "behavior",
+    "text": "Which ghost should you NEVER attempt to outrun?",
+    "detail": "Running in line of sight is a death sentence \u2014 hiding is the only correct response.",
+    "options": [
+      "Hantu",
+      "Revenant",
+      "Moroi",
+      "Deogen"
+    ],
+    "answer": 1,
+    "explain": "<strong>Revenant</strong> in chase mode moves at <span class='tag'>3 m/s</span> \u2014 faster than the player walk speed. You cannot outrun it in a straight line. The only viable defense is breaking line of sight before it locks on, then hiding silently until its speed drops."
+  },
+  {
+    "type": "sanity",
+    "text": "Lowest hunt threshold of any ghost in the game?",
+    "detail": "This ghost is so passive it almost ignores you.",
+    "options": [
+      "35% \u2014 Shade",
+      "40% \u2014 Deogen",
+      "50% \u2014 average",
+      "15% \u2014 Thaye (aged)"
+    ],
+    "answer": 0,
+    "explain": "<strong>Shade</strong> sits at <span class='tag'>35%</span> sanity \u2014 the lowest base hunt threshold in the game. Thaye can technically dip to 15% at full age, but its base threshold starts at 75%. For default-state ghosts, Shade is the floor."
+  },
+  {
+    "type": "behavior",
+    "text": "Multiple players stand in the ghost room. The ghost refuses to interact with anything until they leave.",
+    "detail": "Activity goes dead the moment anyone walks in.",
+    "options": [
+      "Shade",
+      "Goryo",
+      "Mare",
+      "Yurei"
+    ],
+    "answer": 0,
+    "explain": "<strong>Shade</strong> is the most passive ghost in the game. It won't generate evidence or interact with objects while a player is in the same room \u2014 and it can't initiate a hunt above 35% sanity. The counter is to leave the room and monitor it remotely via camera."
+  },
+  {
+    "type": "tell",
+    "text": "It's been 30 minutes. Sanity is at 40%. Still no hunt. Which ghost should you start strongly suspecting?",
+    "detail": "A patient, shy spirit.",
+    "options": [
+      "Demon",
+      "Shade",
+      "Onryo",
+      "Banshee"
+    ],
+    "answer": 1,
+    "explain": "<strong>Shade</strong>'s 35% threshold means a long hunt-free stretch even at low sanity is a major Shade indicator. It also has a 0% chance to trigger ghost events at 100% sanity, with that chance scaling up by 2% per percentage point of sanity lost."
+  },
+  {
+    "type": "sanity",
+    "text": "At what sanity does a Demon start hunting?",
+    "detail": "All other ghosts cap out at 60% or below for their hunt threshold (situational cases aside).",
+    "options": [
+      "40%",
+      "50%",
+      "60%",
+      "70%"
+    ],
+    "answer": 3,
+    "explain": "<strong>Demon</strong> hunts at <span class='tag'>70%</span> sanity. It's the only ghost with a base threshold above the standard 50% (Yokai and Thaye can go higher under specific conditions). If you're being hunted in the green sanity range, suspect Demon first."
+  },
+  {
+    "type": "behavior",
+    "text": "The crucifix radius for one ghost is 50% larger than normal \u2014 but smudges only stun it for 60 seconds.",
+    "detail": "Cross is bigger, smoke is shorter.",
+    "options": [
+      "Demon",
+      "Spirit",
+      "Wraith",
+      "Yurei"
+    ],
+    "answer": 0,
+    "explain": "<strong>Demon</strong> has a <span class='tag'>50% larger crucifix radius</span> (5 m vs 3 m) but its smudge stun is only <span class='tag'>60 s</span> versus the standard 90 s. The crucifix is your friend, the smudge stick less so. Always carry one from the start on Demon-possible contracts."
+  },
+  {
+    "type": "tell",
+    "text": "You just unlocked the front door. The ghost initiates a hunt within 30 seconds of entry, while everyone is still at 100% sanity.",
+    "detail": "No sanity drain. No warning. Just an immediate hunt.",
+    "options": [
+      "Demon",
+      "Wraith",
+      "Phantom",
+      "Onryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Demon</strong> can initiate hunts at any sanity level (with low probability) on top of its 70% threshold. Coupled with a 20-second hunt cooldown (vs standard 25), it's the only ghost that can credibly attack you the moment you walk in."
+  },
+  {
+    "type": "behavior",
+    "text": "Sanity is dropping 15% faster than expected. There's an open door in the ghost room, and players are within 7.5 m. Which ghost?",
+    "detail": "The door, not the ghost, seems to be the trigger.",
+    "options": [
+      "Yurei",
+      "Phantom",
+      "Moroi",
+      "Demon"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> drains 15% sanity in a 7.5 m radius when there's an open door in its current room. Keep doors open to encourage this ability and confirm it. Smudging a Yurei traps it in its favorite room for 90 seconds \u2014 a useful side test."
+  },
+  {
+    "type": "tell",
+    "text": "A door in the ghost room opens, then closes, on its own. An EMF reader picks up two separate level-2 readings on that door.",
+    "detail": "The door isn't being slammed \u2014 it's being deliberately moved through.",
+    "options": [
+      "Yurei",
+      "Mare",
+      "Phantom",
+      "Spirit"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> can fully open or close doors, and each action generates two EMF 2 readings on the door itself. Combined with rapid sanity drain via open doors, it's one of the more recognizable behavioral signatures."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost is unusually visible during hunts \u2014 manifesting longer and more frequently than others \u2014 and it NEVER appears in mist form.",
+    "detail": "Lots of activity. Almost never subtle.",
+    "options": [
+      "Oni",
+      "Phantom",
+      "Banshee",
+      "Shade"
+    ],
+    "answer": 0,
+    "explain": "<strong>Oni</strong> is the most physically visible ghost during hunts. It manifests in full body during events rather than as mist or shadow, and is more active when players are nearby \u2014 opposite of the Shade. Stay close to the ghost room and use a camera to spot it."
+  },
+  {
+    "type": "tell",
+    "text": "Object throws are unusually forceful AND the ghost is more active when players are nearby \u2014 but it isn't a Poltergeist.",
+    "detail": "It's an active ghost with stronger-than-normal throws, full-body manifestations, and never mist.",
+    "options": [
+      "Oni",
+      "Yurei",
+      "Mare",
+      "Twins"
+    ],
+    "answer": 0,
+    "explain": "<strong>Oni</strong> throws with elevated force similar to Poltergeists but is identified by its visibility, full-body manifestations, never appearing as mist, and its preference for being active around players rather than alone."
+  },
+  {
+    "type": "sanity",
+    "text": "You're at 75% sanity. You speak into voice chat near the ghost. A hunt starts. Which ghost?",
+    "detail": "Talking near the ghost just raised its hunt threshold.",
+    "options": [
+      "Yokai",
+      "Demon",
+      "Banshee",
+      "Phantom"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yokai</strong> raises its hunt threshold to <span class='tag'>80%</span> \u2014 the highest situational threshold in the game \u2014 when players talk within 2 m of it. Without voice chat nearby, it's a standard 50%. Hunts above 70% with voice activity = Yokai before Demon."
+  },
+  {
+    "type": "behavior",
+    "text": "During a hunt, this ghost can only hear players within 2.5 m of itself \u2014 much shorter than the standard 9 m range.",
+    "detail": "Stay silent and it'll walk right past.",
+    "options": [
+      "Yokai",
+      "Kormos",
+      "Myling",
+      "Goryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yokai</strong>'s hearing range during hunts is reduced to <span class='tag'>2.5 m</span>, versus the standard 9 m. If you're hiding without line of sight and using global chat doesn't seem to draw it, suspect Yokai. Test by speaking on the B key during a hunt."
+  },
+  {
+    "type": "behavior",
+    "text": "With the breaker OFF, the ghost moves at full speed and emits visible frost breath during hunts. With the breaker ON, it slows noticeably in warm rooms.",
+    "detail": "Cold air makes it faster.",
+    "options": [
+      "Hantu",
+      "Onryo",
+      "Yokai",
+      "Aswang"
+    ],
+    "answer": 0,
+    "explain": "<strong>Hantu</strong> scales speed with room temperature: faster in cold rooms, slower in warm ones. With the breaker off, all rooms stay cold and it runs at full speed. Visible frost breath during hunts is a unique Hantu tell \u2014 no other ghost shows it."
+  },
+  {
+    "type": "tell",
+    "text": "During a hunt you can SEE the ghost breathing out visible frost \u2014 even though that's not normally a feature.",
+    "detail": "It exhales clouds of frozen air mid-chase.",
+    "options": [
+      "Hantu",
+      "Onryo",
+      "Yurei",
+      "Demon"
+    ],
+    "answer": 0,
+    "explain": "<strong>Hantu</strong> is the only ghost that visibly exhales frost during hunts, an effect tied to its cold-affinity mechanic. Combined with its tendency to trip the breaker more often than most ghosts, frost breath is a reliable visual ID."
+  },
+  {
+    "type": "tell",
+    "text": "The D.O.T.S. silhouette is visible ONLY through the video camera \u2014 never to the naked eye when you're standing outside the room.",
+    "detail": "Look directly through the doorway: nothing. Look through the camera: there it is.",
+    "options": [
+      "Goryo",
+      "Phantom",
+      "Mimic",
+      "Twins"
+    ],
+    "answer": 0,
+    "explain": "<strong>Goryo</strong> only displays D.O.T.S. through a video camera, and only when no player is in the same room. Walk-by D.O.T.S. is not a Goryo. If you can see it on the monitor but not through a doorway, you've got one."
+  },
+  {
+    "type": "behavior",
+    "text": "On a large map, the ghost almost never leaves a small area near its favorite room \u2014 even on contracts with high roaming settings.",
+    "detail": "It's strangely homebound.",
+    "options": [
+      "Goryo",
+      "Mare",
+      "Yurei",
+      "Shade"
+    ],
+    "answer": 0,
+    "explain": "<strong>Goryo</strong> rarely roams far from its favorite room. On limited-evidence runs, D.O.T.S. Projector is always one of its guaranteed evidences \u2014 combined with its homebound behavior, you can often confirm it with just a camera and patience."
+  },
+  {
+    "type": "tell",
+    "text": "During a hunt, footsteps and electronic flicker arrive almost simultaneously \u2014 meaning by the time your flashlight stutters, it's already extremely close.",
+    "detail": "Audio range is shorter than usual. Visual range is normal.",
+    "options": [
+      "Myling",
+      "Phantom",
+      "Onryo",
+      "Goryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Myling</strong> footsteps only audible within <span class='tag'>12 m</span> versus the standard 20 m, while electronics still flicker at 10 m. The 'lantern test' uses this: by the time you hear it, your flashlight already warned you. Quietest hunter in the game."
+  },
+  {
+    "type": "behavior",
+    "text": "Despite being a quieter ghost during hunts, this one is unusually CHATTY on the Parabolic Microphone \u2014 paranormal sounds every 40\u201360 seconds.",
+    "detail": "Loud on the mic, quiet on its feet.",
+    "options": [
+      "Myling",
+      "Banshee",
+      "Wraith",
+      "Goryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Myling</strong> produces paranormal sounds at the highest frequency in the game \u2014 roughly every <span class='tag'>40\u201360 s</span> on the Parabolic Microphone versus 80+ seconds for most ghosts. It's a paradox: noisy when idle, near-silent when hunting."
+  },
+  {
+    "type": "sanity",
+    "text": "What's the Onryo's standard hunt threshold?",
+    "detail": "Slightly elevated from average, but not as extreme as the Demon.",
+    "options": [
+      "50%",
+      "60%",
+      "65%",
+      "70%"
+    ],
+    "answer": 1,
+    "explain": "<strong>Onryo</strong> hunts at <span class='tag'>60%</span> sanity by default. This is higher than the standard 50% but lower than the Demon's 70%. The threshold can also be bypassed entirely by extinguishing three of its candles in succession."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost is repelled by fire. If you blow out three of its candles in succession, it attempts a hunt \u2014 regardless of sanity.",
+    "detail": "Flames are its kryptonite, but extinguishing them is also a trigger.",
+    "options": [
+      "Onryo",
+      "Hantu",
+      "Demon",
+      "Mare"
+    ],
+    "answer": 0,
+    "explain": "<strong>Onryo</strong> is afraid of fire but every time a flame is extinguished near it, it counts up \u2014 three in a row triggers an attempted hunt. If a fourth lit flame is in range, it acts as a one-time crucifix and blocks the hunt. Keep at least three flames lit at all times."
+  },
+  {
+    "type": "behavior",
+    "text": "Two ghost interactions trigger almost simultaneously \u2014 one within 3 m of the favorite room, another 16 m away in a totally different area.",
+    "detail": "It can't be in two places at once. Or can it?",
+    "options": [
+      "Twins",
+      "Mimic",
+      "Wraith",
+      "Obake"
+    ],
+    "answer": 0,
+    "explain": "<strong>The Twins</strong> interact with objects in two locations near-simultaneously: standard 3 m radius for the main interaction and an extended 16 m radius for the decoy. There aren't actually two ghosts \u2014 temperature drops and evidence only appear in the real room."
+  },
+  {
+    "type": "tell",
+    "text": "Comparing two consecutive hunts, the ghost's speed feels slightly different \u2014 one hunt at ~1.45 m/s, the next at ~1.87 m/s.",
+    "detail": "Subtle \u00b110% variation between hunts.",
+    "options": [
+      "Twins",
+      "Thaye",
+      "Hantu",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>The Twins</strong> alternate which twin initiates hunts \u2014 one is 10% slower than baseline (1.45 m/s), the other 10% faster (1.87 m/s). The slower twin spawns in the favorite room, the faster one in a random room. Watching hunt-to-hunt speed shifts is the cleanest behavioral tell."
+  },
+  {
+    "type": "sanity",
+    "text": "Raiju's hunt threshold near active electronics?",
+    "detail": "Standard ghosts hunt at 50%. Raiju gets a boost when surrounded by electronics.",
+    "options": [
+      "50%",
+      "55%",
+      "65%",
+      "70%"
+    ],
+    "answer": 2,
+    "explain": "<strong>Raiju</strong> hunts at <span class='tag'>65%</span> when active electronics are nearby, versus 50% standard. The counter is simple: turn off everything non-essential (cameras, EMF readers, sound recorders) during a hunt to deny it the bonus."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost accelerates to 2.5 m/s when it's near active electronics \u2014 and electronics within ~10 m on the same floor blow out around it during hunts.",
+    "detail": "It feeds off your gear.",
+    "options": [
+      "Raiju",
+      "Jinn",
+      "Mimic",
+      "Wraith"
+    ],
+    "answer": 0,
+    "explain": "<strong>Raiju</strong> draws power from electronics. Near active gear it hits 2.5 m/s, and its interference radius scales by map size \u2014 6 m small, 8 m medium, 10 m large. During a Raiju hunt, expect cameras and flashlights to die early."
+  },
+  {
+    "type": "tell",
+    "text": "You find a SIX-fingered handprint on a wall. Which ghost is this conclusive proof of?",
+    "detail": "An extra finger. Definitely not human.",
+    "options": [
+      "Obake",
+      "Phantom",
+      "Wraith",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Obake</strong> is the only ghost in the game that can leave a <span class='tag'>six-fingered</span> handprint. Other unique prints: 2 fingerprints on a light switch (vs 1 standard) and 5 on a keyboard or prison door (vs 4 standard)."
+  },
+  {
+    "type": "behavior",
+    "text": "Fingerprints from this ghost have a 75% chance to appear instead of the usual 100%, and they fade noticeably faster than other ghosts'.",
+    "detail": "Don't rule out fingerprints from a single failed check.",
+    "options": [
+      "Obake",
+      "Wraith",
+      "Goryo",
+      "Phantom"
+    ],
+    "answer": 0,
+    "explain": "<strong>Obake</strong> has a <span class='tag'>75%</span> chance of leaving UV evidence on interactions versus the standard 100%, and its prints decay faster. If your team can't get fingerprints in a single sweep, run UV again \u2014 Obake is the most likely culprit."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost's behavior shifts dramatically every minute or two \u2014 speed, hunting patterns, event style. Then halfway through the contract it just acts like a totally different ghost.",
+    "detail": "Two minutes ago it was a Spirit. Now it's a Hantu. Pick one.",
+    "options": [
+      "Mimic",
+      "Obambo",
+      "Twins",
+      "Thaye"
+    ],
+    "answer": 0,
+    "explain": "<strong>The Mimic</strong> copies another ghost's abilities, speed, hunt thresholds, and event preferences, switching every <span class='tag'>30 s \u2013 2 min</span> (but never during a hunt). It cannot copy evidence \u2014 that's where you catch it."
+  },
+  {
+    "type": "tell",
+    "text": "The contract clearly shows three confirmed evidences, BUT Ghost Orbs also keep appearing on camera even though they aren't listed.",
+    "detail": "The fourth orb shouldn't be there.",
+    "options": [
+      "Mimic",
+      "Twins",
+      "Obake",
+      "Raiju"
+    ],
+    "answer": 0,
+    "explain": "<strong>The Mimic</strong> always produces Ghost Orbs as a 'fake' fourth piece of evidence, regardless of its actual evidence set. Spotting orbs alongside evidence that should exclude them is the cleanest Mimic identification."
+  },
+  {
+    "type": "behavior",
+    "text": "After getting a Spirit Box response, your sanity starts draining twice as fast. Sanity pills clear it; entering a lit room does not.",
+    "detail": "The ghost cursed you for asking questions.",
+    "options": [
+      "Moroi",
+      "Yurei",
+      "Phantom",
+      "Banshee"
+    ],
+    "answer": 0,
+    "explain": "<strong>Moroi</strong> curses any player who receives a Spirit Box response or hears one through a Parabolic Microphone, doubling their sanity drain rate. Only sanity pills remove the curse. Incense also weakens it for longer than standard."
+  },
+  {
+    "type": "tell",
+    "text": "At low team sanity with line of sight, this ghost hits 3.7 m/s \u2014 the fastest hunt speed in the game.",
+    "detail": "Faster than the Revenant. Speed scales with sanity loss.",
+    "options": [
+      "Revenant",
+      "Moroi",
+      "Hantu",
+      "Deogen"
+    ],
+    "answer": 1,
+    "explain": "<strong>Moroi</strong> scales speed with the team's average sanity. At <span class='tag'>0% sanity</span> with line of sight, it reaches <span class='tag'>3.7 m/s</span> \u2014 faster than any other ghost. Compare hunt speed early vs late in the contract; a dramatic increase is Moroi's signature."
+  },
+  {
+    "type": "sanity",
+    "text": "Deogen's hunt threshold?",
+    "detail": "Slightly lower than the standard, but not as low as Shade.",
+    "options": [
+      "50%",
+      "40%",
+      "35%",
+      "60%"
+    ],
+    "answer": 1,
+    "explain": "<strong>Deogen</strong> hunts at <span class='tag'>40%</span> sanity. Slightly lower than the standard 50%. Despite this it's far from passive \u2014 its real terror is that it can always find you."
+  },
+  {
+    "type": "behavior",
+    "text": "Hiding is useless against this ghost. It sprints toward you from across the map \u2014 and then slows to a crawl when it gets within a few meters of you.",
+    "detail": "It always knows where you are, but it's painfully slow up close.",
+    "options": [
+      "Deogen",
+      "Revenant",
+      "Wraith",
+      "Aswang"
+    ],
+    "answer": 0,
+    "explain": "<strong>Deogen</strong> always knows player locations during hunts. It moves at <span class='tag'>3 m/s</span> from a distance but drops to <span class='tag'>0.4 m/s</span> within 2.5 m of you \u2014 the slowest any ghost moves in the game. Loop around objects or walk slowly to survive."
+  },
+  {
+    "type": "tell",
+    "text": "Standing within 1 m of the ghost and using the Spirit Box, you hear a distinctive heavy, bull-like breathing sound.",
+    "detail": "It's not a voice. It's a heavy exhale.",
+    "options": [
+      "Deogen",
+      "Yokai",
+      "Mare",
+      "Moroi"
+    ],
+    "answer": 0,
+    "explain": "<strong>Deogen</strong> has a 33% chance to produce a heavy breathing response on the Spirit Box when you're within 1 m. The sound is exclusive to Deogen and a near-certain confirmation."
+  },
+  {
+    "type": "sanity",
+    "text": "What's Thaye's INITIAL hunt threshold at age 0?",
+    "detail": "Highest base threshold among all ghosts.",
+    "options": [
+      "50%",
+      "60%",
+      "70%",
+      "75%"
+    ],
+    "answer": 3,
+    "explain": "<strong>Thaye</strong> starts at <span class='tag'>75%</span> hunt threshold (higher than even the Demon's 70%), but decreases by 6 per age increment. By age 10, the threshold sits at just 15% \u2014 the lowest possible threshold in the game."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost was hyperactive at the start of the contract \u2014 hunting early, interacting constantly. Thirty minutes later it's slower, less aggressive, almost docile.",
+    "detail": "Aging in reverse, in a sense.",
+    "options": [
+      "Thaye",
+      "Obambo",
+      "Mimic",
+      "Twins"
+    ],
+    "answer": 0,
+    "explain": "<strong>Thaye</strong> ages every 1\u20132 minutes while a player is in the same room (longer if empty). Each age increment slows it down and lowers its hunt threshold. The dramatic activity drop-off is its signature \u2014 identify it fast, before evidence becomes hard to find."
+  },
+  {
+    "type": "tell",
+    "text": "What item can reveal Thaye's current age?",
+    "detail": "Cursed possessions sometimes give game-mechanic info.",
+    "options": [
+      "Ouija Board",
+      "Tarot Cards",
+      "Voodoo Doll",
+      "Music Box"
+    ],
+    "answer": 0,
+    "explain": "<strong>Ouija Board</strong> can reveal Thaye's current age. Each age increment adds 1\u20134 to the displayed 'human age,' so a freshly aged Thaye reads younger than a heavily aged one. It's the only ghost where the Ouija gives you a usable mechanic readout."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost gets STRONGER when players move around close to it \u2014 and weakens significantly when they stand still.",
+    "detail": "Movement provokes. Stillness pacifies.",
+    "options": [
+      "Dayan",
+      "Kormos",
+      "Oni",
+      "Yokai"
+    ],
+    "answer": 0,
+    "explain": "<strong>Dayan</strong> reacts sharply to player movement up close. The cleanest tell is the stand-still test: once you know it's nearby, freeze completely. If activity 'softens,' it's a Dayan. During hunts, it speeds up when you move and slows when you stop."
+  },
+  {
+    "type": "tell",
+    "text": "During hunts, this ghost's speed seems to react to YOUR movement \u2014 faster when you move, slower when you stop.",
+    "detail": "Stillness slows it. Motion accelerates it.",
+    "options": [
+      "Dayan",
+      "Revenant",
+      "Aswang",
+      "Deogen"
+    ],
+    "answer": 0,
+    "explain": "<strong>Dayan</strong> is one of the newer ghosts (Winter 2025), and its movement-responsive speed is its core identifier. Unlike Revenant (LOS-based) or Aswang (also LOS), Dayan keys off your actual motion. Stand still in a safe spot during a hunt to test."
+  },
+  {
+    "type": "behavior",
+    "text": "Using crucifixes and smudges seems to PROVOKE this ghost, and your protective tools feel less effective as the contract progresses \u2014 until it suddenly seems to exhaust itself.",
+    "detail": "Defense becomes offense, then offense exhausts itself.",
+    "options": [
+      "Gallu",
+      "Demon",
+      "Onryo",
+      "Spirit"
+    ],
+    "answer": 0,
+    "explain": "<strong>Gallu</strong> reacts to protective equipment. Crucifixes and smudges provoke it and become less effective over time as it 'rages.' Once it's enraged enough, it exhausts itself and your tools work again \u2014 a 'worse \u2192 better' cycle that's its unique tell."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost flips between two distinct moods on the same contract \u2014 early hunts feel Demon-like, then the same ghost goes slow and easy to track, almost Shade-like.",
+    "detail": "Two personalities, one ghost.",
+    "options": [
+      "Obambo",
+      "Mimic",
+      "Twins",
+      "Thaye"
+    ],
+    "answer": 0,
+    "explain": "<strong>Obambo</strong> alternates between an aggressive state (earlier, faster hunts, sometimes reported above 70% sanity) and a calm state (slower hunts, easier to track). The dual-state behavior tricks newer hunters into calling it a Shade or an Oni."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost is functionally BLIND but has exceptional hearing. Stand silent and motionless during a hunt and it will walk right past you.",
+    "detail": "Don't breathe. Don't crouch. Don't touch a single button.",
+    "options": [
+      "Kormos",
+      "Yokai",
+      "Myling",
+      "Deogen"
+    ],
+    "answer": 0,
+    "explain": "<strong>Kormos</strong> (added May 2026) translates roughly to 'one who does not see.' It's blind but has heightened hearing \u2014 the stand-still-and-silent test is the most reliable ID. Equipment noise, footsteps, and voice all draw it in faster than any other ghost."
+  },
+  {
+    "type": "tell",
+    "text": "Kormos shares all three pieces of evidence with which other ghost \u2014 meaning you can't ID it on evidence alone?",
+    "detail": "Same evidence trio: Ghost Orbs, Spirit Box, Ultraviolet.",
+    "options": [
+      "The Mimic",
+      "Goryo",
+      "Banshee",
+      "Yokai"
+    ],
+    "answer": 0,
+    "explain": "<strong>Kormos</strong> shares <span class='tag'>Ghost Orbs</span> + <span class='tag'>Spirit Box</span> + <span class='tag'>UV</span> with The Mimic. If you collect that combo, you MUST behavior-test (stand-still vs orb-decoy) to distinguish them before submitting your guess."
+  },
+  {
+    "type": "behavior",
+    "text": "This ghost accelerates significantly faster than normal when it has line of sight on a player \u2014 but it can also be lost more easily once you break that sight.",
+    "detail": "Chase mode is the danger; search mode is forgiving.",
+    "options": [
+      "Aswang",
+      "Revenant",
+      "Moroi",
+      "Hantu"
+    ],
+    "answer": 0,
+    "explain": "<strong>Aswang</strong> (added May 2026) gains acceleration faster than other ghosts when it sees you, but prefers chasing over searching. Break line of sight as often as possible \u2014 its threat level drops sharply once it loses you."
+  },
+  {
+    "type": "tell",
+    "text": "Aswang vs Revenant \u2014 how do you tell them apart by speed mechanics?",
+    "detail": "Both react to line of sight, but the curves differ.",
+    "options": [
+      "Aswang has faster but more consistent acceleration during chases; Revenant has a massive speed jump with sight and a huge slow-down without",
+      "Aswang is always faster than Revenant at every distance",
+      "Revenant only accelerates near electronics",
+      "They behave identically"
+    ],
+    "answer": 0,
+    "explain": "<strong>Aswang</strong>'s acceleration is smoother and more consistent, while Revenant has an extreme binary: <span class='tag'>3 m/s</span> with line of sight, <span class='tag'>1 m/s</span> without. Looking at the speed curve over a chase is the cleanest behavioral distinction."
+  },
+  {
+    "type": "sanity",
+    "text": "Three teammates compare notes after a contract. They were hunted at 75% sanity. They were NOT talking near the ghost. Most likely?",
+    "detail": "Hunt at 75% sanity rules out almost everything.",
+    "options": [
+      "Demon",
+      "Yokai",
+      "Obambo (aggressive state)",
+      "Either Demon or Obambo aggressive \u2014 Yokai needs voice nearby"
+    ],
+    "answer": 3,
+    "explain": "<strong>Demon</strong> hunts at 70%, <strong>Obambo</strong>'s aggressive state has been reported above 70%, and <strong>Yokai</strong> needs talking within 2 m to reach its 80% threshold. With no voice nearby, you're picking between Demon and Obambo."
+  },
+  {
+    "type": "behavior",
+    "text": "Smudge a ghost. It can't hunt for 60 seconds. What ghost is it likely to be?",
+    "detail": "Standard smudge silence is 90 seconds. Spirit is 180. This was much shorter.",
+    "options": [
+      "Demon",
+      "Wraith",
+      "Spirit",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Demon</strong>'s smudge stun is just <span class='tag'>60 s</span>. Standard is 90 s; Spirit is 180 s. Smudge stick timing is one of the cleanest ways to distinguish these three."
+  },
+  {
+    "type": "tell",
+    "text": "You stay perfectly still and silent during a hunt. The ghost still finds you instantly. Which is it almost certainly NOT?",
+    "detail": "What ghost would have been fooled by your discipline?",
+    "options": [
+      "Kormos",
+      "Yokai",
+      "Deogen",
+      "Revenant"
+    ],
+    "answer": 0,
+    "explain": "<strong>Kormos</strong> is blind and relies on sound; staying motionless and silent should let it walk past. <strong>Deogen</strong> always knows your location regardless. <strong>Revenant</strong> uses line of sight and sound. <strong>Yokai</strong> has reduced hearing range. If perfect stealth failed, it isn't a Kormos."
+  },
+  {
+    "type": "sanity",
+    "text": "Which ghost uses the SLOWEST hunt speed when adjacent to a player?",
+    "detail": "It's a slow shuffle once it's right on top of you.",
+    "options": [
+      "Deogen \u2014 0.4 m/s within 2.5 m",
+      "Shade \u2014 1 m/s base",
+      "Revenant \u2014 1 m/s when hidden",
+      "Thaye at age 10 \u2014 1 m/s"
+    ],
+    "answer": 0,
+    "explain": "<strong>Deogen</strong> drops to <span class='tag'>0.4 m/s</span> within 2.5 m of a player \u2014 the slowest speed any ghost achieves in the game. Aged Thaye and hidden-from Revenant both bottom out around 1 m/s."
+  },
+  {
+    "type": "behavior",
+    "text": "Which ghost is the FASTEST possible during a hunt under perfect (worst) conditions?",
+    "detail": "All speeds at maximum.",
+    "options": [
+      "Revenant at 3 m/s with LOS",
+      "Moroi at 3.7 m/s at 0% sanity with LOS",
+      "Hantu at 2.7 m/s in cold",
+      "Dayan when player is sprinting"
+    ],
+    "answer": 1,
+    "explain": "<strong>Moroi</strong> can hit <span class='tag'>3.7 m/s</span> at 0% team sanity with line of sight \u2014 the fastest possible ghost speed in the game. Revenant maxes at 3 m/s, Hantu around 2.7 m/s in cold rooms, Thaye starts at 2.75 m/s."
+  },
+  {
+    "type": "tell",
+    "text": "Which ghost can hunt above 50% sanity WITHOUT any special condition like voice chat or electronics?",
+    "detail": "Pure baseline thresholds only.",
+    "options": [
+      "Demon",
+      "Yokai",
+      "Raiju",
+      "Mare"
+    ],
+    "answer": 0,
+    "explain": "Only <strong>Demon</strong> has a baseline threshold above 50% (<span class='tag'>70%</span>). Yokai needs voice within 2 m to reach 80%, Raiju needs active electronics for 65%, and Mare's 60% needs lights off in its room. Demon needs no trigger."
+  },
+  {
+    "type": "behavior",
+    "text": "Salt remains undisturbed after the ghost crosses the room. Which is it?",
+    "detail": "Footsteps confirm movement. Salt is untouched.",
+    "options": [
+      "Wraith",
+      "Phantom",
+      "Banshee",
+      "Goryo"
+    ],
+    "answer": 0,
+    "explain": "<strong>Wraith</strong> is the only ghost that doesn't step in salt, owing to its ability to fly/teleport through environments. Untouched salt after confirmed ghost movement is a near-perfect ID."
+  },
+  {
+    "type": "sanity",
+    "text": "Three identical contracts. In Contract A, hunts started at 50%. B started at 45%. C started at 35%. Most likely candidates for C?",
+    "detail": "C started hunting unusually late.",
+    "options": [
+      "Demon or Yokai",
+      "Shade",
+      "Mare with lights on",
+      "Either Shade or Mare with lights on"
+    ],
+    "answer": 3,
+    "explain": "<strong>Shade</strong> hunts at 35% base. <strong>Mare with lights on</strong> hunts at 40%, very close to 35%. Both are plausible C ghosts. Demon (70%) and Yokai (50% baseline) would hunt much earlier."
+  },
+  {
+    "type": "tell",
+    "text": "Heavy bull-like breathing on the Spirit Box, only audible within 1 m of the ghost. Unique ID?",
+    "detail": "It's not a voice, it's a respiratory sound.",
+    "options": [
+      "Deogen",
+      "Demon",
+      "Moroi",
+      "Yokai"
+    ],
+    "answer": 0,
+    "explain": "<strong>Deogen</strong> is the only ghost that produces a heavy-breathing response on the Spirit Box. You must be within 1 m and there's a 33% chance per question. Combined with the always-knows-you-location behavior, it's a quick ID."
+  },
+  {
+    "type": "sanity",
+    "text": "Average sanity drain is doubled for a player who just got a Spirit Box response. What's happening?",
+    "detail": "Sanity pills clear it. Standing in a lit room doesn't.",
+    "options": [
+      "Yurei is draining everyone in 7.5 m",
+      "Moroi has cursed the player via Spirit Box",
+      "Phantom is being looked at",
+      "Mare is suppressing lights"
+    ],
+    "answer": 1,
+    "explain": "<strong>Moroi</strong> applies a curse to any player who receives a Spirit Box response or hears one through a Parabolic Mic, <em>doubling</em> their sanity drain. Sanity pills are the only direct counter; ambient light won't fix it."
+  },
+  {
+    "type": "behavior",
+    "text": "You leave a smudge stick burning in the ghost's room. The ghost is then 'locked' in that room for 90 seconds \u2014 can't roam out. Which ghost?",
+    "detail": "Smudge as cage, not just stun.",
+    "options": [
+      "Yurei",
+      "Spirit",
+      "Demon",
+      "Shade"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> is uniquely trapped in its favorite room for 90 seconds after a smudge \u2014 it can't even leave to roam. This makes it easier to test other rooms safely after a smudge."
+  },
+  {
+    "type": "sanity",
+    "text": "Below what sanity does the AVERAGE ghost begin hunting?",
+    "detail": "Most ghosts share one common hunt threshold.",
+    "options": [
+      "40%",
+      "50%",
+      "60%",
+      "75%"
+    ],
+    "answer": 1,
+    "explain": "<strong>50% sanity</strong> is the standard hunt threshold for the majority of ghosts. The notable deviations \u2014 Demon 70%, Shade 35%, Mare 40/60, Deogen 40%, Onryo 60%, Yokai 50/80, Thaye 75\u219215, Raiju 50/65 \u2014 are easier to remember once you've memorized 50% as the baseline."
+  },
+  {
+    "type": "tell",
+    "text": "Most ghosts in Phasmophobia move at what base speed during a hunt?",
+    "detail": "It's not the same as the player walk speed.",
+    "options": [
+      "1.0 m/s",
+      "1.7 m/s",
+      "2.5 m/s",
+      "3.0 m/s"
+    ],
+    "answer": 1,
+    "explain": "Standard hunt speed is <span class='tag'>1.7 m/s</span>. Outliers include Revenant (3 m/s LOS / 1 m/s hidden), Moroi (up to 3.7 m/s), Deogen (3 m/s far \u2192 0.4 m/s near), Jinn (2.5 m/s with breaker), Raiju (2.5 m/s near electronics), and aged Thaye (declining from 2.75 m/s)."
+  },
+  {
+    "type": "behavior",
+    "text": "A standard ghost hearing range during hunts is roughly how many meters?",
+    "detail": "Yokai is the famous exception at 2.5 m.",
+    "options": [
+      "3 m",
+      "6 m",
+      "9 m",
+      "12 m"
+    ],
+    "answer": 2,
+    "explain": "Standard hunt hearing range is roughly <span class='tag'>9 m</span>. Yokai narrows this to 2.5 m, while Kormos's hearing is functionally unlimited as long as you make any sound. Stay silent or move out to ~10 m to break a standard ghost's awareness."
+  },
+  {
+    "type": "tell",
+    "text": "Which ghost type uniquely shape-shifts between ghost models DURING a hunt?",
+    "detail": "Watch the ghost flicker count.",
+    "options": [
+      "Obake",
+      "Mimic",
+      "Phantom",
+      "Wraith"
+    ],
+    "answer": 0,
+    "explain": "<strong>Obake</strong> shape-shifts model during hunts at very specific flicker counts (12th, 27th, 39th, 54th, 62nd, 80th, 105th, 120th, 132nd flickers per community testing). The Mimic copies behaviors and the Phantom disappears in photos, but model swaps mid-hunt = Obake."
+  },
+  {
+    "type": "behavior",
+    "text": "What's the simplest one-test confirmation for a Wraith?",
+    "detail": "Doesn't require risk during a hunt.",
+    "options": [
+      "Salt in a doorway it crosses \u2014 remains undisturbed",
+      "Photograph it during an event",
+      "Place a candle near its favorite room",
+      "Use a Parabolic Microphone outside"
+    ],
+    "answer": 0,
+    "explain": "<strong>Wraith</strong>'s clean test is salt in a confirmed patrol path. If the salt is undisturbed after the ghost has crossed it, you've got a Wraith. It's risk-free since you don't have to be near the ghost during a hunt."
+  },
+  {
+    "type": "sanity",
+    "text": "Sanity drains FASTER in which one of these scenarios? (No cursed possession effects)",
+    "detail": "All players have the same loadout. No items.",
+    "options": [
+      "Standing within 7.5 m of a Yurei with an open door in its room",
+      "Standing in a fully lit room at 75% sanity",
+      "Wearing a head-mounted camera",
+      "Holding a candle"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> causes a 15% sanity drop on all players within 7.5 m when there's an open door in its current room. This is on top of base passive drain. Closing doors and keeping out of range neutralizes it."
+  },
+  {
+    "type": "behavior",
+    "text": "During a hunt, the ghost passes within meters of you while you're in voice chat \u2014 but turns away even though you're talking loudly.",
+    "detail": "It didn't hear you despite the proximity.",
+    "options": [
+      "Yokai (hearing range only 2.5 m during hunts)",
+      "Kormos (blind, ignores motionless players)",
+      "Deogen (always knows location)",
+      "Phantom (chases random players, not noise)"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yokai</strong>'s hunt hearing radius shrinks to <span class='tag'>2.5 m</span>. If you talked from 4\u20135 m and it didn't react, that's the test. Kormos still hears noise, Deogen always knows, Phantom doesn't care about your voice."
+  },
+  {
+    "type": "tell",
+    "text": "Which two ghosts share EXACTLY the same three pieces of evidence?",
+    "detail": "On evidence alone, you can't tell them apart.",
+    "options": [
+      "Kormos & The Mimic \u2014 both Ghost Orbs / Spirit Box / UV",
+      "Spirit & Wraith",
+      "Demon & Onryo",
+      "Twins & Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Kormos</strong> and <strong>The Mimic</strong> both feature Ghost Orbs, Spirit Box, and UV. You MUST use behavior tests \u2014 Mimic shows ghost orbs as a decoy 4th evidence; Kormos ignores motionless, silent players during hunts."
+  },
+  {
+    "type": "behavior",
+    "text": "What's the safest survival strategy when you suspect a Deogen?",
+    "detail": "Hiding doesn't work.",
+    "options": [
+      "Loop around objects or walk slowly down a long hallway as it approaches",
+      "Hide in the closest closet immediately",
+      "Run as far away as possible",
+      "Drop a smudge stick at your feet"
+    ],
+    "answer": 0,
+    "explain": "<strong>Deogen</strong> can always find you, so hiding is wasted. The correct play is to loop around an object or walk slowly down a long hallway. Once it's within 2.5 m it drops to 0.4 m/s \u2014 slower than a walking player. Maintain the gap and you survive."
+  },
+  {
+    "type": "sanity",
+    "text": "Which ghost's hunt threshold can drop to just 15% \u2014 the lowest possible in the entire game?",
+    "detail": "Only at maximum age.",
+    "options": [
+      "Shade (35%)",
+      "Thaye at age 10 (15%)",
+      "Deogen (40%)",
+      "Mare with lights on (40%)"
+    ],
+    "answer": 1,
+    "explain": "<strong>Thaye</strong> at age 10 hunts at <span class='tag'>15%</span> sanity \u2014 the lowest possible threshold in the game. Each age increment drops the threshold by 6, starting from 75%. Note that aged Thaye is also one of the slowest, so it becomes nearly inert."
+  },
+  {
+    "type": "tell",
+    "text": "What's the unique fingerprint signature on a LIGHT SWITCH that confirms one specific ghost?",
+    "detail": "Other ghosts leave one print. This one leaves two.",
+    "options": [
+      "Obake \u2014 2 fingerprints on a light switch",
+      "Spirit \u2014 4 fingerprints",
+      "Wraith \u2014 handprint",
+      "Goryo \u2014 fingerprint visible only on camera"
+    ],
+    "answer": 0,
+    "explain": "<strong>Obake</strong> leaves <span class='tag'>2</span> fingerprints on a light switch (other ghosts: 1) and <span class='tag'>5</span> on a keyboard or prison door (other ghosts: 4). The six-fingered handprint is also exclusive to Obake."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost throws an object that's MUCH further across the room than normal \u2014 but it's a single object, not multiple. Manifests in full body during events. Never appears as mist.",
+    "detail": "Aggressive, visible, single-throws.",
+    "options": [
+      "Oni",
+      "Poltergeist",
+      "Mare",
+      "Yurei"
+    ],
+    "answer": 0,
+    "explain": "<strong>Oni</strong> throws single objects with elevated force but doesn't multi-throw like a Poltergeist. Its distinguishing tells: full body manifestation in events, never mist form, and more active when players are nearby."
+  },
+  {
+    "type": "tell",
+    "text": "Which ghost's defining trick is that it can teleport directly next to a random player, leaving EMF readings far from its actual room?",
+    "detail": "It doesn't walk to you. It just appears.",
+    "options": [
+      "Wraith",
+      "Twins",
+      "Banshee",
+      "Mimic"
+    ],
+    "answer": 0,
+    "explain": "<strong>Wraith</strong> teleports adjacent to a random player periodically, generating EMF 2 or 5 readings at the new location. Combined with its salt immunity, far-from-room EMF is a strong Wraith indicator."
+  },
+  {
+    "type": "behavior",
+    "text": "You suspect this ghost. The hunt rolled into hunting mode the moment three lit candles in a row were blown out.",
+    "detail": "Flame as trigger, not just deterrent.",
+    "options": [
+      "Onryo",
+      "Hantu",
+      "Demon",
+      "Spirit"
+    ],
+    "answer": 0,
+    "explain": "<strong>Onryo</strong> attempts a hunt every time three flames in a row are extinguished. A fourth lit flame in range acts as a one-shot crucifix. Maintain at least three lit candles in its room and don't blow them out yourself."
+  },
+  {
+    "type": "sanity",
+    "text": "Which two ghosts have hunt thresholds tied to ENVIRONMENTAL conditions rather than just sanity %?",
+    "detail": "Their hunt window changes based on what's happening around them.",
+    "options": [
+      "Mare (lighting) and Raiju (electronics)",
+      "Demon and Shade",
+      "Onryo and Hantu",
+      "Yokai and Deogen"
+    ],
+    "answer": 0,
+    "explain": "<strong>Mare</strong> hunts at 60% (lights off) or 40% (lights on). <strong>Raiju</strong> hunts at 65% (near electronics) or 50% (no electronics). Yokai also shifts based on voice (50% \u2192 80%), but the cleanest pair tied to ENVIRONMENT (not player action) is Mare and Raiju."
+  },
+  {
+    "type": "tell",
+    "text": "A ghost that appears as a tall, crawling, or bent-over figure during hunts \u2014 is this enough to identify it?",
+    "detail": "Players sometimes claim the model 'looks like' a specific ghost.",
+    "options": [
+      "No \u2014 ghost models are randomly assigned and shared across ALL ghost types",
+      "Yes \u2014 that's always a Deogen",
+      "Yes \u2014 that's always a Patient 07 form, which is the Shade",
+      "Only if the figure is glowing"
+    ],
+    "answer": 0,
+    "explain": "Ghost models are <em>randomly assigned and shared across all ghost types</em>. The Patient 07 'crawling' model can belong to any ghost. The only model-based exceptions: <strong>Banshee and Dayan</strong> are always female, so a male model rules them out. Otherwise: appearance tells you nothing."
+  },
+  {
+    "type": "behavior",
+    "text": "When the ghost interacts with a door, the door fully opens or closes by itself \u2014 and the EMF reader picks up TWO separate level-2 readings on that door.",
+    "detail": "Not a slam, a deliberate movement.",
+    "options": [
+      "Yurei",
+      "Mare",
+      "Wraith",
+      "Phantom"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> can fully open or close doors, creating two EMF 2 readings on the door itself. This is one of its core behavioral tells. Pair it with rapid sanity drain through open doors for a confident ID."
+  },
+  {
+    "type": "tell",
+    "text": "Two ghosts have a SHORTENED smudge stun versus the standard 90 seconds. Which?",
+    "detail": "These are the ones where smudging buys you the least time.",
+    "options": [
+      "Demon (60 s) \u2014 and that's the only one shortened",
+      "Demon (60 s) and Spirit (180 s)",
+      "Yurei (45 s) and Onryo (60 s)",
+      "Wraith (60 s) and Mimic (60 s)"
+    ],
+    "answer": 0,
+    "explain": "Only <strong>Demon</strong> has a shortened smudge stun at <span class='tag'>60 s</span>. <strong>Spirit</strong> has an EXTENDED stun (180 s), not shortened. All other ghosts use the standard 90 seconds (with Yurei being a special case where it gets trapped in its room for 90 s)."
+  },
+  {
+    "type": "behavior",
+    "text": "The ghost rolled into a hunt while one of your teammates was at a different floor. Your teammate continued investigating, completely unaffected \u2014 only one specific player was actually being hunted.",
+    "detail": "It's narrowly focused.",
+    "options": [
+      "Banshee",
+      "Phantom",
+      "Wraith",
+      "Demon"
+    ],
+    "answer": 0,
+    "explain": "<strong>Banshee</strong> targets one player and only that player. Teammates can walk past during a chase and even within line of sight without being killed. Identifying who is being targeted (via crucifix carry, smudge tests) can confirm a Banshee."
+  },
+  {
+    "type": "sanity",
+    "text": "Yokai's hunt threshold WITHOUT voice activity near it?",
+    "detail": "Without any voice within 2 m, it acts like a standard ghost.",
+    "options": [
+      "50%",
+      "65%",
+      "80%",
+      "40%"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yokai</strong> defaults to the standard <span class='tag'>50%</span> threshold. It only rises to 80% when players speak within 2 m of it. Without voice chat near the ghost, Yokai is indistinguishable from a standard 50% ghost on threshold alone."
+  },
+  {
+    "type": "behavior",
+    "text": "Which ghost cannot copy evidence \u2014 and therefore is identifiable by a 'bonus' fourth evidence type appearing on contract?",
+    "detail": "It can shapeshift behavior but not evidence.",
+    "options": [
+      "The Mimic \u2014 always produces Ghost Orbs in addition to its evidence set",
+      "Obake \u2014 always produces an extra fingerprint",
+      "Twins \u2014 produces two of every evidence",
+      "Thaye \u2014 produces fewer evidences with age"
+    ],
+    "answer": 0,
+    "explain": "<strong>The Mimic</strong>'s actual evidence is Fingerprints + Spirit Box + Freezing, but it ALWAYS produces Ghost Orbs as a decoy fourth evidence. If orbs appear on a contract where evidence patterns shouldn't include them, suspect Mimic."
+  },
+  {
+    "type": "tell",
+    "text": "Looking at the ghost during an event drains sanity TWICE as fast as the standard rate. Which?",
+    "detail": "Don't make eye contact.",
+    "options": [
+      "Phantom",
+      "Demon",
+      "Banshee",
+      "Moroi"
+    ],
+    "answer": 0,
+    "explain": "<strong>Phantom</strong> drains sanity faster than any other ghost when you look at it. Take a photo to make it disappear (the event continues but the visual stops draining sanity), or just look away."
+  },
+  {
+    "type": "behavior",
+    "text": "Closes doors during hunts and is known for opening/closing them outside of hunts too. Open doors in its room speed up sanity loss.",
+    "detail": "Door enthusiast.",
+    "options": [
+      "Yurei",
+      "Phantom",
+      "Banshee",
+      "Mare"
+    ],
+    "answer": 0,
+    "explain": "<strong>Yurei</strong> is the door ghost \u2014 it opens or closes doors during normal play (creating 2\u00d7 EMF 2 readings), and it accelerates sanity drain via open doors. During hunts it tends to close doors behind it as well."
+  },
+  {
+    "type": "sanity",
+    "text": "Which ghost type has the SHORTEST hunt cooldown \u2014 the least downtime between hunts?",
+    "detail": "Standard cooldown is 25 seconds.",
+    "options": [
+      "Demon \u2014 20 seconds",
+      "Hantu \u2014 15 seconds",
+      "Spirit \u2014 0 seconds",
+      "Mimic \u2014 variable"
+    ],
+    "answer": 0,
+    "explain": "<strong>Demon</strong> has the shortest cooldown at <span class='tag'>20 s</span>, versus the standard 25 s. Combined with its high 70% threshold and ability to hunt at any sanity, it's the most aggressive ghost on every dimension."
+  },
+  {
+    "type": "tell",
+    "text": "Electronics within ~10 m on the same floor start failing during hunts even though the ghost isn't directly interacting with them.",
+    "detail": "Cameras die, flashlights flicker harder, equipment in the area fails.",
+    "options": [
+      "Raiju",
+      "Jinn",
+      "Mimic",
+      "Wraith"
+    ],
+    "answer": 0,
+    "explain": "<strong>Raiju</strong> emits electronic interference across a radius that scales with map size (6 m small / 8 m medium / 10 m large) on the same floor. Cameras and flashlights die early during its hunts. Turn off non-essential gear to suppress its 65% threshold bonus."
+  },
+  {
+    "type": "behavior",
+    "text": "What's the test to identify a Mare reliably WITHOUT waiting for a hunt?",
+    "detail": "Use its lighting preference.",
+    "options": [
+      "Turn on lights in adjacent rooms but leave one dark \u2014 Mare drifts toward unlit room",
+      "Photograph it three times in succession",
+      "Place a smudge in the favorite room",
+      "Speak loudly near it"
+    ],
+    "answer": 0,
+    "explain": "<strong>Mare</strong> prefers darkness and will roam toward unlit rooms over lit ones. Setting up a 'light trap' \u2014 bright rooms surrounding one dark room \u2014 can confirm a Mare without needing to drop sanity into hunt territory."
+  },
+  {
+    "type": "tell",
+    "text": "Which ghost's identifying behavior is that it ages over time?",
+    "detail": "Older = slower, less active.",
+    "options": [
+      "Thaye",
+      "Obambo",
+      "Twins",
+      "Spirit"
+    ],
+    "answer": 0,
+    "explain": "<strong>Thaye</strong> ages every 1\u20132 minutes when a player is in its room (+30 s if empty). Each age increment slows it and lowers its hunt threshold. Its activity drops dramatically over a single contract \u2014 early hunts then prolonged silence is the classic Thaye arc."
+  },
+  {
+    "type": "behavior",
+    "text": "Which ghost is the ONLY one that can hunt the moment you enter the location at 100% sanity, with no setup?",
+    "detail": "It doesn't need any sanity drain to trigger.",
+    "options": [
+      "Demon",
+      "Phantom",
+      "Onryo",
+      "Spirit"
+    ],
+    "answer": 0,
+    "explain": "<strong>Demon</strong> is the only ghost that can attempt a hunt at any sanity level, including 100%. While the probability is low at full sanity, it's nonzero \u2014 and combined with the 70% threshold, a Demon can credibly hunt the second you unlock the front door."
+  },
+  }
+]

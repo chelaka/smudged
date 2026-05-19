@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spectral Field Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0c;
+        --text: #e5e0d5;
+        --text-dim: #a09a93;
+        --text-faint: #7c7670;
+        --accent: #94c5a8;
+        --accent-bright: #b8e5cc;
+        --danger: #c87878;
+        --hairline: rgba(229, 224, 213, 0.08);
+        --hairline-strong: rgba(229, 224, 213, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Cold paranormal atmosphere */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 50% 0%,
+            rgba(100, 190, 155, 0.08),
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 70% 50% at 10% 85%,
+            rgba(50, 70, 115, 0.07),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 70% 50% at 90% 85%,
+            rgba(40, 60, 105, 0.06),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 100% 100% at 50% 110%,
+            rgba(0, 0, 0, 0.8),
+            transparent 60%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Subtle camera scan-line interference */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(0, 0, 0, 0.013) 3px,
+          rgba(0, 0, 0, 0.013) 4px
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .stage {
+        position: relative;
+        z-index: 1;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 88px 32px 96px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== SITE HEADER ===== */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 22px 40px;
+        z-index: 10;
+      }
+
+      /* ===== TOP MARK ===== */
+      .top-mark {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        font-weight: 400;
+      }
+      .top-mark .dot {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background: var(--accent);
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        opacity: 0.7;
+        animation: glowPulse 3s ease-in-out infinite;
+      }
+
+      /* ===== SCREENS ===== */
+      .screen {
+        display: none;
+        flex: 1;
+        flex-direction: column;
+      }
+      .screen.active {
+        display: flex;
+        animation: fadeIn 0.6s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== TITLE SCREEN ===== */
+      .title-screen {
+        justify-content: center;
+      }
+
+      h1.title {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        font-size: clamp(48px, 8vw, 84px);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--text);
+        margin-bottom: 28px;
+      }
+      h1.title em {
+        font-style: italic;
+        font-weight: 300;
+        color: var(--accent);
+      }
+
+      .blurb {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text-dim);
+        max-width: 460px;
+        margin-bottom: 56px;
+      }
+
+      .title-tag {
+        align-self: flex-start;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        border: 1px solid var(--hairline-strong);
+        border-radius: 999px;
+        padding: 4px 12px;
+        margin-bottom: 28px;
+      }
+
+      .title-stats {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 0;
+        border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        margin-bottom: 32px;
+      }
+      .title-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .stat-val {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        font-weight: 300;
+        line-height: 1;
+        color: var(--text);
+      }
+      .stat-label {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .stat-div {
+        width: 1px;
+        height: 36px;
+        background: var(--hairline-strong);
+        flex-shrink: 0;
+      }
+
+      .title-begin {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 28px;
+      }
+
+      /* ===== BUTTONS ===== */
+      button {
+        background: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button.primary {
+        align-self: flex-start;
+        padding: 14px 28px;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text);
+        border: 1px solid var(--hairline-strong);
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      button.primary::after {
+        content: "\2192";
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      button.primary:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        box-shadow:
+          0 0 22px rgba(148, 197, 168, 0.18),
+          inset 0 0 22px rgba(148, 197, 168, 0.04);
+      }
+      button.primary:hover::after {
+        transform: translateX(5px);
+      }
+
+      /* ===== QUIZ SCREEN ===== */
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        font-size: 14px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .meta-row .count {
+        color: var(--text);
+        font-weight: 400;
+      }
+
+      .progress {
+        height: 1px;
+        background: var(--hairline);
+        margin-bottom: 56px;
+        position: relative;
+        overflow: hidden;
+      }
+      .progress-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        background: var(--accent);
+        width: 0;
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 8px rgba(148, 197, 168, 0.6);
+      }
+
+      .q-category {
+        align-self: flex-start;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 20px;
+        font-weight: 400;
+        opacity: 0.8;
+        background: rgba(148, 197, 168, 0.08);
+        border: 1px solid rgba(148, 197, 168, 0.15);
+        border-radius: 999px;
+        padding: 4px 12px;
+        animation: staticFlicker 14s ease-in-out infinite;
+      }
+
+      .question {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 400;
+        font-size: clamp(32px, 5vw, 40px);
+        line-height: 1.05;
+        letter-spacing: -0.005em;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+
+      .q-detail {
+        font-size: 14px;
+        color: var(--text-dim);
+        margin-bottom: 48px;
+        max-width: 540px;
+        line-height: 1.6;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 48px;
+        border-top: 1px solid var(--hairline);
+      }
+
+      .opt {
+        background: transparent;
+        color: var(--text);
+        padding: 18px 0;
+        text-align: left;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 300;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .opt-mark {
+        color: var(--text-faint);
+        font-size: 14px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        min-width: 16px;
+        transition: color 0.25s ease;
+      }
+      .opt-text {
+        flex: 1;
+        line-height: 1.5;
+      }
+      .opt:hover:not(:disabled) {
+        color: var(--accent);
+      }
+      .opt:hover:not(:disabled) .opt-mark {
+        color: var(--accent);
+      }
+      .opt:disabled {
+        cursor: default;
+      }
+
+      .opt.correct,
+      .opt.correct .opt-mark {
+        color: var(--accent);
+        text-shadow: 0 0 10px rgba(148, 197, 168, 0.45);
+      }
+      .opt.correct .opt-mark::after {
+        content: " \25C9";
+      }
+      .opt.wrong,
+      .opt.wrong .opt-mark {
+        color: var(--danger);
+        text-shadow: 0 0 10px rgba(200, 120, 120, 0.35);
+      }
+      .opt.wrong .opt-mark::after {
+        content: " \2715";
+      }
+      .opt.dim {
+        opacity: 0.3;
+      }
+
+      .options.answered .opt.dim {
+        opacity: 0.15;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .options.answered .opt.wrong {
+        opacity: 0.5;
+      }
+
+      .opt-expansion {
+        padding: 20px 0 28px 0;
+        border-bottom: 1px solid var(--hairline);
+        animation: fadeIn 0.4s ease;
+      }
+
+      .verdict {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .verdict.correct { color: var(--accent); }
+      .verdict.incorrect { color: var(--danger); }
+
+      .explainer {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--text);
+        margin-bottom: 40px;
+        max-width: 580px;
+      }
+      .explainer strong {
+        color: var(--accent);
+        font-weight: 400;
+      }
+      .explainer em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .explainer .tag {
+        display: inline;
+        color: var(--accent);
+        font-weight: 400;
+        padding: 0 4px;
+        background: rgba(148, 197, 168, 0.06);
+      }
+
+      button.next {
+        width: 100%;
+        padding: 14px 28px;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text);
+        background: transparent;
+        border: 1px solid var(--hairline-strong);
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        margin-top: 12px;
+      }
+      button.next::after {
+        content: "\2192";
+        transition: transform 0.3s ease;
+      }
+      button.next:hover {
+        border-color: rgba(229, 224, 213, 0.35);
+        color: var(--accent);
+      }
+      button.next:hover::after {
+        transform: translateX(4px);
+      }
+
+      /* ===== RESULTS ===== */
+      .results-screen .label {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 24px;
+      }
+
+      .rank {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(48px, 7vw, 72px);
+        line-height: 1;
+        margin-bottom: 24px;
+        color: var(--text);
+      }
+
+      .score-row {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+        margin-bottom: 48px;
+        color: var(--text-dim);
+        font-size: 14px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .score-row .big {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 64px;
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        text-transform: none;
+      }
+      .score-row .pct {
+        color: var(--accent);
+        font-weight: 400;
+      }
+
+      .rank-note {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text-dim);
+        max-width: 500px;
+        margin-bottom: 56px;
+      }
+
+      .report {
+        border-top: 1px solid var(--hairline);
+        padding-top: 28px;
+        margin-bottom: 56px;
+      }
+      .report-label {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 16px;
+      }
+      .report ul {
+        list-style: none;
+      }
+      .report li {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 8px 0;
+        font-size: 14px;
+        color: var(--text-dim);
+        border-bottom: 1px solid var(--hairline);
+        line-height: 1.4;
+      }
+      .report li:last-child {
+        border-bottom: none;
+      }
+      .report li .q-text {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .report li .ok {
+        color: var(--accent);
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .report li .no {
+        color: var(--danger);
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0.7;
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .site-header {
+          padding: 18px 24px;
+        }
+        .stage {
+          padding: 72px 24px 64px;
+        }
+        .top-mark span:nth-child(2) {
+          display: none;
+        }
+        .blurb {
+          font-size: 17px;
+        }
+      }
+
+      /* ===== GHOST LINKS ===== */
+      .ghost-link {
+        background: none; border: none; font: inherit; cursor: pointer;
+        font-size: 14px; letter-spacing: 0.07em; text-transform: uppercase;
+        color: var(--text-faint); transition: color 0.2s ease; padding: 0;
+      }
+      .ghost-link:hover { color: var(--accent); }
+      .ghost-link-sep { color: var(--text-faint); font-size: 14px; }
+      .title-links { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+      .back-link { margin-top: 0; }
+
+      /* ===== TITLE PERSONAL BEST ===== */
+      .title-personal {
+        display: none; align-items: center; gap: 24px;
+        padding: 20px 0; border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline); margin-bottom: 24px;
+      }
+
+      /* ===== MODE SELECT ===== */
+      .mode-header { margin-bottom: 40px; }
+      .mode-title {
+        font-family: "Cormorant Garamond", serif; font-weight: 300;
+        font-size: clamp(36px, 6vw, 60px); line-height: 1; margin-bottom: 12px;
+      }
+      .mode-title em { font-style: italic; color: var(--accent); }
+      .mode-sub { font-size: 14px; color: var(--text-dim); }
+      .mode-cards { display: flex; flex-direction: column; border-top: 1px solid var(--hairline); margin-bottom: 24px; }
+      .mode-card {
+        background: transparent; border: none; border-bottom: 1px solid var(--hairline);
+        color: var(--text); cursor: pointer; text-align: left; padding: 18px 0;
+        transition: all 0.2s ease;
+      }
+      .mode-card:hover { padding-left: 8px; }
+      .mode-card-inner { display: flex; flex-direction: column; gap: 4px; }
+      .mode-name {
+        font-family: "Cormorant Garamond", serif; font-size: 24px; font-weight: 300;
+      }
+      .mode-desc { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--text-dim); }
+      .mode-meta { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); opacity: 0.8; }
+      .focus-subpick {
+        flex-direction: column; gap: 12px; padding: 20px 0;
+        border-top: 1px solid var(--hairline); margin-bottom: 20px;
+      }
+      .focus-label { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+      .focus-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+      .focus-type-btn {
+        padding: 8px 20px; border: 1px solid var(--hairline-strong); border-radius: 999px;
+        background: transparent; color: var(--text); font: inherit; font-size: 14px;
+        letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease;
+      }
+      .focus-type-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+      /* ===== STREAK DISPLAY ===== */
+      .streak-display { display: flex; align-items: center; gap: 4px; }
+      .streak-val { font-family: "Cormorant Garamond", serif; font-size: 22px; color: var(--accent); line-height: 1; }
+      .streak-icon { color: var(--accent); font-size: 14px; opacity: 0.8; }
+
+      /* ===== TIMER ===== */
+      .timer-row { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+      .timer-bar { flex: 1; height: 2px; background: var(--hairline); position: relative; overflow: hidden; border-radius: 1px; }
+      .timer-fill {
+        position: absolute; inset: 0 auto 0 0; width: 100%;
+        background: var(--accent); transition: width 1s linear, background 0.3s ease;
+      }
+      .timer-fill.danger { background: var(--danger); }
+      .timer-val { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--text-dim); min-width: 20px; text-align: right; }
+      .timer-val.timer-danger { color: var(--danger); }
+
+      /* ===== ACCOLADES ===== */
+      .acco-grid { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--hairline); margin-bottom: 24px; }
+      .acco-chip {
+        display: flex; align-items: flex-start; gap: 14px;
+        padding: 16px 0; border-bottom: 1px solid var(--hairline);
+        transition: opacity 0.2s ease;
+      }
+      .acco-chip--locked { opacity: 0.3; }
+      .acco-chip--new {
+        border: 1px solid rgba(148,197,168,0.3); border-radius: 8px;
+        padding: 14px; margin-bottom: 8px;
+        background: rgba(148,197,168,0.04);
+        animation: fadeIn 0.5s ease;
+      }
+      .acco-icon { color: var(--accent); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+      .acco-chip--locked .acco-icon { color: var(--text-faint); }
+      .acco-body { display: flex; flex-direction: column; gap: 3px; }
+      .acco-name { font-family: "Cormorant Garamond", serif; font-size: 20px; font-weight: 300; color: var(--text); }
+      .acco-desc { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+      .acco-date { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-top: 2px; }
+      .accolades-earned { margin-top: 32px; }
+      .acco-list { display: flex; flex-direction: column; gap: 0; margin-top: 12px; }
+
+      /* ===== STATS SCREEN ===== */
+      .stats-grid { display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px; }
+      .stats-block { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--hairline); padding-top: 20px; }
+      .stats-row {
+        display: flex; justify-content: space-between; align-items: baseline;
+        padding: 7px 0; font-size: 14px; color: var(--text-dim);
+        border-bottom: 1px solid var(--hairline);
+      }
+      .stats-row:last-child { border-bottom: none; }
+      .stats-row span:last-child { color: var(--text); font-weight: 400; }
+      .report-ul { list-style: none; }
+
+      /* ===== SHARE BUTTON ===== */
+      .share-btn { margin-top: 12px; }
+
+      /* ===== TOAST ===== */
+      .toast {
+        position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+        background: var(--text); color: var(--bg);
+        font-size: 14px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+        padding: 10px 20px; border-radius: 999px;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 100;
+      }
+      .toast--visible { opacity: 1; }
+
+      /* ===== MOBILE MODE CARDS ===== */
+      @media (max-width: 600px) {
+        .focus-btns { flex-direction: column; }
+        .focus-type-btn { width: 100%; }
+      }
+
+      /* ===== GHOST ORBS ===== */
+      .orbs {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(148, 197, 168, 0.9) 0%,
+          rgba(148, 197, 168, 0.25) 45%,
+          transparent 70%
+        );
+        filter: blur(1.5px);
+        animation: orbFloat linear infinite;
+      }
+      .orb-1 {
+        width: 5px;
+        height: 5px;
+        left: 11%;
+        bottom: -8px;
+        animation-duration: 24s;
+        animation-delay: 0s;
+      }
+      .orb-2 {
+        width: 3px;
+        height: 3px;
+        left: 68%;
+        bottom: -8px;
+        animation-duration: 32s;
+        animation-delay: -9s;
+      }
+      .orb-3 {
+        width: 7px;
+        height: 7px;
+        left: 83%;
+        bottom: -8px;
+        animation-duration: 28s;
+        animation-delay: -16s;
+      }
+      .orb-4 {
+        width: 4px;
+        height: 4px;
+        left: 37%;
+        bottom: -8px;
+        animation-duration: 38s;
+        animation-delay: -6s;
+      }
+      .orb-5 {
+        width: 3px;
+        height: 3px;
+        left: 53%;
+        bottom: -8px;
+        animation-duration: 30s;
+        animation-delay: -22s;
+      }
+
+      /* ===== KEYFRAMES ===== */
+      @keyframes orbFloat {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        5% {
+          opacity: 0.75;
+        }
+        50% {
+          transform: translateY(-52vh) translateX(18px);
+          opacity: 0.45;
+        }
+        90% {
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-108vh) translateX(28px);
+          opacity: 0;
+        }
+      }
+
+      @keyframes glowPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 4px rgba(148, 197, 168, 0.4);
+          opacity: 0.7;
+        }
+        50% {
+          box-shadow: 0 0 10px rgba(148, 197, 168, 0.9);
+          opacity: 1;
+        }
+      }
+
+      @keyframes staticFlicker {
+        0%,
+        88%,
+        90.5%,
+        93%,
+        96%,
+        100% {
+          opacity: 0.8;
+        }
+        89%,
+        92%,
+        94.5% {
+          opacity: 0.35;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="orb orb-4"></span>
+      <span class="orb orb-5"></span>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <header class="site-header">
+      <div class="top-mark">
+        <span><span class="dot"></span><button class="ghost-link" style="color:var(--text-dim)" onclick="goHome()">Spectral Field Manual</button></span>
+        <span></span>
+        <span id="bankSource">Smudged</span>
+      </div>
+    </header>
+
+    <div class="stage">
+      <!-- TITLE -->
+      <section class="screen title-screen active" id="titleScreen">
+        <div class="title-tag">Spectral Field Exam</div>
+        <h1 class="title">Ghost<br /><em>Identification</em></h1>
+        <p class="blurb">
+          Twelve questions drawn at random from the manual. Identify each
+          entity by its behaviors, its tells, and the sanity at which it
+          begins to hunt.
+        </p>
+        <div class="title-personal" id="titlePersonal" style="display:none">
+          <div class="title-stat">
+            <span class="stat-val" id="titleBestPct">—</span>
+            <span class="stat-label">personal best</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="title-stat">
+            <span class="stat-val" id="titleBestStreak">—</span>
+            <span class="stat-label">best streak</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="title-stat">
+            <span class="stat-val" id="titleGames">—</span>
+            <span class="stat-label">contracts filed</span>
+          </div>
+        </div>
+        <button class="primary title-begin" onclick="showModeSelect()">Begin Investigation</button>
+        <div class="title-links">
+          <button class="ghost-link" onclick="showStats()">Field Dossier</button>
+          <span class="ghost-link-sep">·</span>
+          <button class="ghost-link" onclick="showAccolades()">Accolades</button>
+        </div>
+      </section>
+
+      <!-- MODE SELECT -->
+      <section class="screen" id="modeScreen">
+        <div class="mode-header">
+          <h2 class="mode-title">Choose Your<br><em>Protocol</em></h2>
+          <p class="mode-sub">Each protocol tests your knowledge differently.</p>
+        </div>
+        <div class="mode-cards">
+          <button class="mode-card" onclick="selectMode('standard')">
+            <div class="mode-card-inner">
+              <span class="mode-name">Standard</span>
+              <span class="mode-desc">12 balanced questions. Behavior, tell, and sanity.</span>
+              <span class="mode-meta">Best: <span id="bestStandard">—</span></span>
+            </div>
+          </button>
+          <button class="mode-card" onclick="selectMode('speedrun')">
+            <div class="mode-card-inner">
+              <span class="mode-name">Speed Run</span>
+              <span class="mode-desc">15 seconds per question. Timeout counts as wrong.</span>
+              <span class="mode-meta">Best time: <span id="bestSpeedrun">—</span></span>
+            </div>
+          </button>
+          <button class="mode-card" onclick="selectMode('suddendeath')">
+            <div class="mode-card-inner">
+              <span class="mode-name">Sudden Death</span>
+              <span class="mode-desc">One wrong answer ends the investigation.</span>
+              <span class="mode-meta">Best: <span id="bestSuddenDeath">—</span></span>
+            </div>
+          </button>
+          <button class="mode-card" onclick="selectMode('focus')">
+            <div class="mode-card-inner">
+              <span class="mode-name">Focus</span>
+              <span class="mode-desc">12 questions from one category only.</span>
+              <span class="mode-meta">Best: <span id="bestFocus">—</span></span>
+            </div>
+          </button>
+        </div>
+        <div class="focus-subpick" id="focusSubpick" style="display:none">
+          <span class="focus-label">Select category</span>
+          <div class="focus-btns">
+            <button class="focus-type-btn" onclick="selectFocusType('behavior')">Behavior</button>
+            <button class="focus-type-btn" onclick="selectFocusType('tell')">Tell</button>
+            <button class="focus-type-btn" onclick="selectFocusType('sanity')">Sanity</button>
+          </div>
+        </div>
+        <button class="ghost-link back-link" onclick="goBack('titleScreen')">← Back</button>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="screen" id="quizScreen">
+        <div class="meta-row">
+          <span id="modeLabel">Investigation</span>
+          <span class="streak-display" id="streakDisplay" style="display:none">
+            <span class="streak-val" id="streakVal">0</span>
+            <span class="streak-icon">◈</span>
+          </span>
+          <span><span class="count" id="qNum">1</span> / <span id="qTotal">12</span></span>
+        </div>
+        <div class="progress">
+          <div class="progress-fill" id="progFill"></div>
+        </div>
+        <div class="timer-row" id="timerRow" style="display:none">
+          <div class="timer-bar">
+            <div class="timer-fill" id="timerFill"></div>
+          </div>
+          <span class="timer-val" id="timerVal">15</span>
+        </div>
+
+        <div class="q-category" id="qType">Behavioral Pattern</div>
+        <h2 class="question" id="qText"></h2>
+        <p class="q-detail" id="qDetail"></p>
+
+        <div class="options" id="optionsBox"></div>
+
+      </section>
+
+      <!-- STATS -->
+      <section class="screen" id="statsScreen">
+        <div class="label">Field Dossier</div>
+        <div class="stats-grid">
+          <div class="stats-block">
+            <div class="report-label">Lifetime</div>
+            <div class="stats-row"><span>Games played</span><span id="statGames">—</span></div>
+            <div class="stats-row"><span>Total correct</span><span id="statCorrect">—</span></div>
+            <div class="stats-row"><span>Overall accuracy</span><span id="statAccuracy">—</span></div>
+            <div class="stats-row"><span>Current streak</span><span id="statStreak">—</span></div>
+            <div class="stats-row"><span>Best streak</span><span id="statBestStreak">—</span></div>
+          </div>
+          <div class="stats-block">
+            <div class="report-label">By Type</div>
+            <div class="stats-row"><span>Behavior</span><span id="statBehavior">—</span></div>
+            <div class="stats-row"><span>Tell</span><span id="statTell">—</span></div>
+            <div class="stats-row"><span>Sanity</span><span id="statSanity">—</span></div>
+          </div>
+          <div class="stats-block">
+            <div class="report-label">Personal Bests</div>
+            <div class="stats-row"><span>Standard</span><span id="statBestStandard">—</span></div>
+            <div class="stats-row"><span>Speed Run</span><span id="statBestSpeedrun">—</span></div>
+            <div class="stats-row"><span>Sudden Death</span><span id="statBestSD">—</span></div>
+            <div class="stats-row"><span>Focus</span><span id="statBestFocus">—</span></div>
+          </div>
+          <div class="stats-block">
+            <div class="report-label">Recent History</div>
+            <ul id="recentList" class="report-ul"></ul>
+          </div>
+        </div>
+        <button class="primary" onclick="showAccolades()">View Accolades</button>
+        <div class="title-links" style="margin-top:16px">
+          <button class="ghost-link back-link" onclick="goBack('titleScreen')">← Back</button>
+        </div>
+      </section>
+
+      <!-- ACCOLADES -->
+      <section class="screen" id="accoladesScreen">
+        <div class="label">Accolades</div>
+        <div class="acco-grid" id="accoGrid"></div>
+        <div class="title-links" style="margin-top:24px">
+          <button class="ghost-link back-link" onclick="goBack('titleScreen')">← Back</button>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section class="screen results-screen" id="resultsScreen">
+        <div class="label">Case Closed</div>
+        <div class="rank" id="rankTitle"></div>
+        <div class="score-row">
+          <span class="big" id="scoreBig">0</span>
+          <span>of <span id="scoreTotal">12</span></span>
+          <span class="pct" id="scorePct">0%</span>
+        </div>
+        <p class="rank-note" id="rankBlurb"></p>
+
+        <div class="report">
+          <div class="report-label">Field Report</div>
+          <ul id="resultList"></ul>
+        </div>
+
+        <button class="primary" onclick="restart()">Begin Again</button>
+        <button class="next share-btn" onclick="shareResult()">Copy Field Report</button>
+        <div class="accolades-earned" id="accoPanelNew" style="display:none">
+          <div class="report-label">Accolades Earned</div>
+          <div class="acco-list" id="accoListNew"></div>
+        </div>
+        <div class="title-links" style="margin-top:16px">
+          <button class="ghost-link" onclick="showStats()">Field Dossier</button>
+          <span class="ghost-link-sep">·</span>
+          <button class="ghost-link" onclick="showAccolades()">All Accolades</button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // ===== GLOBALS =====
+      const APP_VERSION = "1.0.0";
+      const QUESTIONS_PER_QUIZ = 12;
+      let allQuestions = [], questions = [], current = 0, score = 0, answers = [];
+      let currentMode = 'standard';
+      let focusType = null;
+      let speedrunTimer = null;
+      let speedrunTimeLeft = 15;
+      let quizStartTime = null;
+      let survivedCount = 0;
+      let currentResult = null;
+      let currentNewAccolades = [];
+      let quizStreak = 0;
+
+      const el = (id) => document.getElementById(id);
+
+      // ===== ACCOLADE DEFS =====
+      const ACCOLADE_DEFS = [
+        { id: 'DEAD_CALM',        name: 'Dead Calm',              desc: 'You finished a quiz without hesitating. No second-guessing the Shade.',                       hint: 'Complete your first investigation.' },
+        { id: 'CRYPTID_HUNTER',   name: 'Cryptid Hunter',         desc: "The field manual is closed. You don't need it.",                                              hint: 'Score 100% on Standard mode.' },
+        { id: 'PERFECT_SANITY',   name: 'Perfect Sanity',         desc: 'Every threshold, every condition. Quoted from memory.',                                         hint: 'Score 100% on Focus: Sanity.' },
+        { id: 'PERFECT_BEHAVIOR', name: 'Perfect Behavior',       desc: 'Ghost behavior is a language. You\'re fluent.',                                                hint: 'Score 100% on Focus: Behavior.' },
+        { id: 'PERFECT_TELL',     name: 'Perfect Tell',           desc: 'You see what others miss.',                                                                    hint: 'Score 100% on Focus: Tell.' },
+        { id: 'GHOST_WHISPERER',  name: 'Ghost Whisperer',        desc: 'You survived Sudden Death without a single mistake.',                                          hint: 'Complete Sudden Death mode perfectly.' },
+        { id: 'MARATHON_AGENT',   name: 'Marathon Agent',         desc: 'Ten contracts filed.',                                                                         hint: 'Complete 10 total quizzes.' },
+        { id: 'STREAK_OF_SEVEN',  name: 'Streak of Seven',        desc: 'Seven straight. The ghost never had a chance.',                                                hint: 'Achieve 7+ consecutive correct answers.' },
+        { id: 'DEAD_SPRINT',      name: 'Dead Sprint',            desc: "Full quiz. Under ninety seconds. You didn't stop to breathe.",                                hint: 'Finish Speedrun mode in under 90 seconds.' },
+        { id: 'ALL_PROTOCOLS',    name: 'All Protocols Cleared',  desc: 'Standard, Speed, Sudden Death, Focus — every protocol filed.',                                 hint: 'Complete at least one quiz in each mode.' },
+        { id: 'SECOND_CHANCE',    name: 'Second Chance',          desc: 'You came back. Three times.',                                                                  hint: 'Complete 3 or more quizzes.' },
+        { id: 'TYPE_MASTER',      name: 'Type Master',            desc: 'Behavior, Tell, Sanity — all above 80% across your career.',                                  hint: 'Reach 80%+ accuracy in all three question types.' },
+        { id: 'UNDYING',          name: 'Undying',                desc: 'You survived. And then you survived again.',                                                   hint: 'Reach 5+ in Sudden Death on two separate runs.' },
+      ];
+
+      // ===== STORAGE HELPERS =====
+      function storageGet(key, fallback) {
+        try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
+      }
+      function storageSet(key, val) {
+        try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+      }
+      function defaultStats() {
+        return { version: 1, gamesPlayed: 0, totalCorrect: 0, totalQuestions: 0,
+          bestScore: { standard: null, speedrun: null, suddendeath: null, focus: null },
+          typeStats: { behavior: { correct: 0, total: 0 }, tell: { correct: 0, total: 0 }, sanity: { correct: 0, total: 0 } },
+          currentStreak: 0, bestStreak: 0, perfectGames: 0, suddenDeathBest: 0,
+          gamesPerMode: { standard: 0, speedrun: 0, suddendeath: 0, focus: 0 } };
+      }
+      function loadStats() { const s = storageGet('smudged_stats', null); return s && s.version === 1 ? s : defaultStats(); }
+      function saveStats(s) { storageSet('smudged_stats', s); }
+      function loadHistory() { return storageGet('smudged_history', []); }
+      function saveHistory(h) { storageSet('smudged_history', h); }
+      function loadAccolades() { return storageGet('smudged_accolades', {}); }
+      function saveAccolades(a) { storageSet('smudged_accolades', a); }
+
+      // ===== SAVE QUIZ RESULT =====
+      function saveQuizResult(result) {
+        const stats = loadStats();
+        stats.gamesPlayed++;
+        stats.gamesPerMode[result.mode] = (stats.gamesPerMode[result.mode] || 0) + 1;
+        stats.totalCorrect += result.correct;
+        stats.totalQuestions += result.total;
+        result.answers.forEach(a => {
+          if (stats.typeStats[a.type]) {
+            stats.typeStats[a.type].total++;
+            if (a.correct) stats.typeStats[a.type].correct++;
+          }
+        });
+        result.answers.forEach(a => {
+          if (a.correct) { stats.currentStreak++; if (stats.currentStreak > stats.bestStreak) stats.bestStreak = stats.currentStreak; }
+          else stats.currentStreak = 0;
+        });
+        if (result.mode === 'standard' && (!stats.bestScore.standard || result.pct > stats.bestScore.standard.pct))
+          stats.bestScore.standard = { correct: result.correct, total: result.total, pct: result.pct, date: new Date().toISOString() };
+        if (result.mode === 'speedrun' && (!stats.bestScore.speedrun || result.timeMs < (stats.bestScore.speedrun.time || Infinity)))
+          stats.bestScore.speedrun = { correct: result.correct, total: result.total, pct: result.pct, time: result.timeMs, date: new Date().toISOString() };
+        if (result.mode === 'suddendeath' && (!stats.bestScore.suddendeath || result.survived > (stats.bestScore.suddendeath.reached || 0))) {
+          stats.bestScore.suddendeath = { reached: result.survived, date: new Date().toISOString() };
+          if (result.survived > stats.suddenDeathBest) stats.suddenDeathBest = result.survived;
+        }
+        if (result.mode === 'focus' && (!stats.bestScore.focus || result.pct > stats.bestScore.focus.pct))
+          stats.bestScore.focus = { correct: result.correct, total: result.total, pct: result.pct, focusType: result.focusType, date: new Date().toISOString() };
+        if (result.pct === 100 && (result.mode === 'standard' || result.mode === 'focus')) stats.perfectGames++;
+        saveStats(stats);
+        const history = loadHistory();
+        history.unshift({ ...result, date: new Date().toISOString(), newAccolades: [] });
+        if (history.length > 20) history.length = 20;
+        saveHistory(history);
+      }
+
+      // ===== ACCOLADE CHECK =====
+      function checkAccolades(result, stats, previousAccolades) {
+        const newlyEarned = [];
+        const already = id => !!previousAccolades[id];
+        const earn = id => { if (!already(id)) newlyEarned.push(id); };
+        if (stats.gamesPlayed === 1) earn('DEAD_CALM');
+        if (result.mode === 'standard' && result.pct === 100) earn('CRYPTID_HUNTER');
+        if (result.mode === 'focus' && result.pct === 100) {
+          if (result.focusType === 'sanity') earn('PERFECT_SANITY');
+          if (result.focusType === 'behavior') earn('PERFECT_BEHAVIOR');
+          if (result.focusType === 'tell') earn('PERFECT_TELL');
+        }
+        if (result.mode === 'suddendeath' && result.survived === 12) earn('GHOST_WHISPERER');
+        if (stats.gamesPlayed >= 10) earn('MARATHON_AGENT');
+        if (stats.bestStreak >= 7) earn('STREAK_OF_SEVEN');
+        if (result.mode === 'speedrun' && result.timeMs !== null && result.timeMs < 90000) earn('DEAD_SPRINT');
+        const m = stats.gamesPerMode;
+        if (m.standard > 0 && m.speedrun > 0 && m.suddendeath > 0 && m.focus > 0) earn('ALL_PROTOCOLS');
+        if (stats.gamesPlayed >= 3) earn('SECOND_CHANCE');
+        const ts = stats.typeStats;
+        if (ts.behavior.total >= 12 && ts.behavior.correct/ts.behavior.total >= 0.8 &&
+            ts.tell.total >= 12 && ts.tell.correct/ts.tell.total >= 0.8 &&
+            ts.sanity.total >= 12 && ts.sanity.correct/ts.sanity.total >= 0.8) earn('TYPE_MASTER');
+        if (result.mode === 'suddendeath' && result.survived >= 5) {
+          const prev = loadHistory().filter(h => h.mode === 'suddendeath' && h.survived >= 5);
+          if (prev.length >= 2) earn('UNDYING');
+        }
+        return newlyEarned;
+      }
+
+      // ===== SHARE + TOAST =====
+      function formatTime(ms) {
+        const s = Math.floor(ms / 1000);
+        return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+      }
+      function formatDate(iso) {
+        return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+      function buildShareText(result, newAccos) {
+        const lines = ['◈ SMUDGED — Spectral Field Exam'];
+        const modeLabel = { standard: 'STANDARD', speedrun: 'SPEED RUN', suddendeath: 'SUDDEN DEATH', focus: `FOCUS — ${(result.focusType||'').toUpperCase()}` };
+        lines.push(`Protocol: ${modeLabel[result.mode] || result.mode.toUpperCase()}`);
+        if (result.mode === 'suddendeath') lines.push(`Survived: ${result.survived} / ${result.total}`);
+        else { lines.push(`Score: ${result.correct}/${result.total} (${result.pct}%)${result.timeMs ? ' — ' + formatTime(result.timeMs) : ''}`); }
+        lines.push(`Rank: ${result.rank}`);
+        if (newAccos.length > 0) {
+          lines.push('');
+          lines.push('New Accolades:');
+          newAccos.forEach(id => { const d = ACCOLADE_DEFS.find(x => x.id === id); if (d) lines.push(`  ◈ ${d.name} — ${d.desc}`); });
+        }
+        lines.push(''); lines.push('[smudged — phasmophobia quiz]');
+        return lines.join('\n');
+      }
+      async function shareResult() {
+        const text = buildShareText(currentResult, currentNewAccolades);
+        try { await navigator.clipboard.writeText(text); } catch {
+          const ta = document.createElement('textarea'); ta.value = text;
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+        }
+        showToast('Copied to clipboard');
+      }
+      function showToast(msg) {
+        const t = el('toast'); t.textContent = msg;
+        t.classList.add('toast--visible');
+        setTimeout(() => t.classList.remove('toast--visible'), 2200);
+      }
+
+      // ===== STATS & ACCOLADES RENDER =====
+      function populateTitleStats() {
+        const stats = loadStats();
+        if (stats.gamesPlayed === 0) return;
+        el('titlePersonal').style.display = 'flex';
+        const bests = [stats.bestScore.standard?.pct, stats.bestScore.focus?.pct].filter(Boolean);
+        el('titleBestPct').textContent = bests.length > 0 ? Math.max(...bests) + '%' : '—';
+        el('titleBestStreak').textContent = stats.bestStreak || '—';
+        el('titleGames').textContent = stats.gamesPlayed;
+      }
+
+      function populateModeCardBests() {
+        const stats = loadStats();
+        const sb = stats.bestScore;
+        el('bestStandard').textContent = sb.standard ? sb.standard.pct + '%' : '—';
+        el('bestSpeedrun').textContent = sb.speedrun ? formatTime(sb.speedrun.time) : '—';
+        el('bestSuddenDeath').textContent = sb.suddendeath ? sb.suddendeath.reached + ' / 12' : '—';
+        el('bestFocus').textContent = sb.focus ? sb.focus.pct + '% (' + sb.focus.focusType + ')' : '—';
+      }
+
+      function renderStatsScreen() {
+        const stats = loadStats();
+        el('statGames').textContent = stats.gamesPlayed;
+        el('statCorrect').textContent = stats.totalCorrect;
+        el('statAccuracy').textContent = stats.totalQuestions > 0 ? Math.round(stats.totalCorrect/stats.totalQuestions*100) + '%' : '—';
+        el('statStreak').textContent = stats.currentStreak;
+        el('statBestStreak').textContent = stats.bestStreak;
+        const ts = stats.typeStats;
+        const typePct = (t) => t.total > 0 ? Math.round(t.correct/t.total*100) + '% (' + t.total + ' q)' : '—';
+        el('statBehavior').textContent = typePct(ts.behavior);
+        el('statTell').textContent = typePct(ts.tell);
+        el('statSanity').textContent = typePct(ts.sanity);
+        const sb = stats.bestScore;
+        el('statBestStandard').textContent = sb.standard ? sb.standard.pct + '%' : '—';
+        el('statBestSpeedrun').textContent = sb.speedrun ? formatTime(sb.speedrun.time) : '—';
+        el('statBestSD').textContent = sb.suddendeath ? sb.suddendeath.reached + ' / 12' : '—';
+        el('statBestFocus').textContent = sb.focus ? sb.focus.pct + '% (' + sb.focus.focusType + ')' : '—';
+        const history = loadHistory().slice(0, 5);
+        el('recentList').innerHTML = history.length === 0 ? '<li style="color:var(--text-faint)">No history yet</li>' :
+          history.map(h => {
+            const score = h.mode === 'suddendeath' ? h.survived + '/12 survived' : h.correct + '/' + h.total + ' (' + h.pct + '%)';
+            return `<li><span class="q-text">${h.mode.toUpperCase()}${h.focusType ? ' ('+h.focusType+')' : ''} — ${score}</span><span class="ok">${h.rank || ''}</span></li>`;
+          }).join('');
+      }
+
+      function renderAccoladeGrid() {
+        const unlocked = loadAccolades();
+        el('accoGrid').innerHTML = ACCOLADE_DEFS.map(def => {
+          const earned = !!unlocked[def.id];
+          return `<div class="acco-chip ${earned ? 'acco-chip--earned' : 'acco-chip--locked'}">
+            <span class="acco-icon">${earned ? '◈' : '◇'}</span>
+            <div class="acco-body">
+              <span class="acco-name">${earned ? def.name : '[CLASSIFIED]'}</span>
+              <span class="acco-desc">${earned ? def.desc : def.hint}</span>
+              ${earned ? `<span class="acco-date">${formatDate(unlocked[def.id].unlockedAt)}</span>` : ''}
+            </div>
+          </div>`;
+        }).join('');
+      }
+
+      function renderNewAccolades(ids) {
+        if (!ids.length) return;
+        el('accoPanelNew').style.display = 'block';
+        el('accoListNew').innerHTML = ids.map(id => {
+          const d = ACCOLADE_DEFS.find(x => x.id === id);
+          if (!d) return '';
+          return `<div class="acco-chip acco-chip--new">
+            <span class="acco-icon">◈</span>
+            <div class="acco-body">
+              <span class="acco-name">${d.name}</span>
+              <span class="acco-desc">${d.desc}</span>
+            </div>
+          </div>`;
+        }).join('');
+      }
+
+      // ===== MODE & NAVIGATION =====
+      function showModeSelect() {
+        populateModeCardBests();
+        el('focusSubpick').style.display = 'none';
+        showScreen('modeScreen');
+      }
+      function selectMode(mode) {
+        currentMode = mode;
+        focusType = null;
+        if (mode === 'focus') { el('focusSubpick').style.display = 'flex'; return; }
+        startQuiz();
+      }
+      function selectFocusType(type) { focusType = type; startQuiz(); }
+      function showStats() { renderStatsScreen(); showScreen('statsScreen'); }
+      function showAccolades() { renderAccoladeGrid(); showScreen('accoladesScreen'); }
+      function goBack(screenId) { showScreen(screenId); }
+      function goHome() { stopSpeedrunTimer(); showScreen('titleScreen'); }
+
+      function pickFocusQuestions(bank, type, n) {
+        return shuffle(bank.filter(q => q.type === type)).slice(0, n);
+      }
+
+      // ===== SPEEDRUN TIMER =====
+      function startSpeedrunTimer() {
+        speedrunTimeLeft = 15;
+        updateTimerDisplay();
+        el('timerRow').style.display = 'flex';
+        speedrunTimer = setInterval(() => {
+          speedrunTimeLeft--;
+          updateTimerDisplay();
+          if (speedrunTimeLeft <= 0) { clearInterval(speedrunTimer); speedrunTimer = null; onSpeedrunTimeout(); }
+        }, 1000);
+      }
+      function stopSpeedrunTimer() { if (speedrunTimer) { clearInterval(speedrunTimer); speedrunTimer = null; } }
+      function onSpeedrunTimeout() { choose(-1, null); }
+      function updateTimerDisplay() {
+        el('timerVal').textContent = speedrunTimeLeft;
+        const danger = speedrunTimeLeft <= 5;
+        el('timerVal').classList.toggle('timer-danger', danger);
+        el('timerFill').classList.toggle('danger', danger);
+        el('timerFill').style.width = (speedrunTimeLeft / 15 * 100) + '%';
+      }
+
+      // ===== CORE QUIZ =====
+      async function loadQuestionBank() {
+        const res = await fetch("questions.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error("questions.json fetch failed: " + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data) || data.length === 0) throw new Error("questions.json is empty");
+        el("bankSource").textContent = "questions.json";
+        return data;
+      }
+
+      function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function pickQuestions(bank, n) {
+        const byType = { behavior: [], tell: [], sanity: [] };
+        bank.forEach((q) => { if (byType[q.type]) byType[q.type].push(q); });
+        const perType = Math.floor(n / 3);
+        const remainder = n - perType * 3;
+        let picked = [];
+        ["behavior", "tell", "sanity"].forEach((t) => {
+          picked = picked.concat(shuffle(byType[t]).slice(0, perType));
+        });
+        if (picked.length < n) {
+          const remaining = bank.filter((q) => !picked.includes(q));
+          picked = picked.concat(shuffle(remaining).slice(0, n - picked.length));
+        }
+        if (remainder > 0) {
+          const remaining = bank.filter((q) => !picked.includes(q));
+          picked = picked.concat(shuffle(remaining).slice(0, remainder));
+        }
+        return shuffle(picked);
+      }
+
+      function showScreen(id) {
+        document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+        el(id).classList.add("active");
+      }
+
+      function startQuiz() {
+        if (currentMode === 'focus' && focusType) {
+          questions = pickFocusQuestions(allQuestions, focusType, QUESTIONS_PER_QUIZ);
+        } else {
+          questions = pickQuestions(allQuestions, QUESTIONS_PER_QUIZ);
+        }
+        current = 0; score = 0; answers = []; survivedCount = 0; quizStreak = 0;
+        quizStartTime = Date.now();
+        el('qTotal').textContent = questions.length;
+        el('timerRow').style.display = 'none';
+        const modeLabels = { standard: 'Investigation', speedrun: 'Speed Run', suddendeath: 'Sudden Death', focus: 'Focus — ' + (focusType||'') };
+        el('modeLabel').textContent = modeLabels[currentMode] || 'Investigation';
+        el('streakDisplay').style.display = 'none';
+        showScreen('quizScreen');
+        renderQuestion();
+      }
+
+      function renderQuestion() {
+        const q = questions[current];
+        el("qNum").textContent = current + 1;
+        el("progFill").style.width = `${(current / questions.length) * 100}%`;
+
+        el("qType").textContent = {
+          behavior: "Behavioral Pattern",
+          tell: "Signature Tell",
+          sanity: "Sanity Threshold",
+        }[q.type] || "Anomaly";
+
+        el("qText").textContent = q.text;
+        el("qDetail").textContent = q.detail;
+
+        const optsBox = el("optionsBox");
+        optsBox.innerHTML = "";
+        optsBox.classList.remove("answered");
+        q.options.forEach((opt, i) => {
+          const b = document.createElement("button");
+          b.className = "opt";
+          b.innerHTML = `<span class="opt-mark">${String.fromCharCode(65 + i)}</span><span class="opt-text"></span>`;
+          b.querySelector(".opt-text").textContent = opt;
+          b.onclick = () => choose(i, b);
+          optsBox.appendChild(b);
+        });
+
+        if (currentMode === 'speedrun') startSpeedrunTimer();
+      }
+
+      function choose(idx, btn) {
+        stopSpeedrunTimer();
+        const q = questions[current];
+        const correct = idx === q.answer;
+        const all = document.querySelectorAll('.opt');
+        all.forEach((b, i) => {
+          b.disabled = true;
+          if (i === q.answer) b.classList.add('correct');
+          if (i === idx && !correct) b.classList.add('wrong');
+          if (i !== q.answer && i !== idx) b.classList.add('dim');
+        });
+        if (correct) { score++; survivedCount++; quizStreak++; }
+        else quizStreak = 0;
+        answers.push({ q: q.text, type: q.type, correct });
+        el('optionsBox').classList.add('answered');
+
+        if (quizStreak >= 2) { el('streakDisplay').style.display = 'flex'; el('streakVal').textContent = quizStreak; }
+        else el('streakDisplay').style.display = 'none';
+
+        const correctBtn = document.querySelectorAll('.opt')[q.answer];
+        const expansion = document.createElement('div');
+        expansion.className = 'opt-expansion';
+        const verdictText = idx === -1 ? 'Time expired — entity escaped' : correct ? 'Correct identification' : 'Misidentified — entity escaped';
+        const verdictClass = correct ? 'correct' : 'incorrect';
+        expansion.innerHTML = `
+          <div class="verdict ${verdictClass}">${verdictText}</div>
+          <div class="explainer">${q.explain}</div>
+          ${currentMode !== 'suddendeath' || correct
+            ? `<button class="next" onclick="nextQuestion()">${current === questions.length - 1 ? 'View Field Report' : 'Continue'}</button>`
+            : ''}
+        `;
+        correctBtn.insertAdjacentElement('afterend', expansion);
+
+        if (currentMode === 'suddendeath' && !correct) {
+          setTimeout(() => showResults(), 1200);
+        }
+      }
+
+      function nextQuestion() {
+        current++;
+        if (current >= questions.length) {
+          showResults();
+        } else {
+          renderQuestion();
+        }
+      }
+
+      function showResults() {
+        stopSpeedrunTimer();
+        el('progFill').style.width = '100%';
+        const timeMs = Date.now() - quizStartTime;
+        const pct = Math.round((score / questions.length) * 100);
+
+        let rank;
+        if (currentMode === 'suddendeath') {
+          const survived = survivedCount;
+          rank = survived === 12 ? 'Ghost Whisperer' : survived >= 9 ? 'Veteran Agent' : survived >= 6 ? 'Field Operative' : survived >= 3 ? 'Rookie Error' : survived >= 1 ? 'Immediate Casualty' : 'Never Got Past the Threshold';
+          currentResult = { mode: 'suddendeath', focusType: null, correct: score, total: questions.length, pct, rank, timeMs: null, survived, answers };
+        } else {
+          rank = pct === 100 ? 'Cryptid Hunter' : pct >= 75 ? 'Seasoned Investigator' : pct >= 50 ? 'Junior Apprentice' : pct >= 25 ? 'Waiver Signed' : 'Missing Person';
+          currentResult = { mode: currentMode, focusType, correct: score, total: questions.length, pct, rank, timeMs: currentMode === 'speedrun' ? timeMs : null, survived: null, answers };
+        }
+
+        const prevAccolades = loadAccolades();
+        saveQuizResult(currentResult);
+        const stats = loadStats();
+        currentNewAccolades = checkAccolades(currentResult, stats, prevAccolades);
+        if (currentNewAccolades.length > 0) {
+          const accos = loadAccolades();
+          currentNewAccolades.forEach(id => { accos[id] = { unlockedAt: new Date().toISOString() }; });
+          saveAccolades(accos);
+        }
+
+        el('scoreBig').textContent = score;
+        el('scoreTotal').textContent = questions.length;
+        el('scorePct').textContent = currentMode === 'suddendeath' ? survivedCount + ' survived' : pct + '%';
+        if (currentMode === 'speedrun') el('scorePct').textContent = pct + '% — ' + formatTime(timeMs);
+
+        let note;
+        if (currentMode === 'suddendeath') {
+          note = survivedCount === 12 ? 'Flawless. The entities never stood a chance.' : survivedCount >= 9 ? 'A solid showing. One lapse from the end.' : survivedCount >= 6 ? 'Past the halfway mark. The manual would help.' : survivedCount >= 3 ? 'A valiant effort. More study required.' : 'The investigation ended before it began.';
+        } else {
+          note = pct === 100 ? "You quoted from the field manual without opening it. The Demon at 70% didn't even surprise you."
+            : pct >= 75 ? "You're the one calling out evidence patterns over team chat while everyone else is still finding their flashlight."
+            : pct >= 50 ? 'You know the basics. The deeper behavioral cues are still hazy. Bring a teammate and lean on the journal.'
+            : pct >= 25 ? 'You found the truck. You found the front door. Beyond that, things got complicated.'
+            : 'Last known location: the location. Last known sanity: low. The paperwork has been filed.';
+        }
+        el('rankTitle').textContent = rank;
+        el('rankBlurb').textContent = note;
+
+        el('resultList').innerHTML = answers.map((a, i) =>
+          `<li><span class="q-text">${String(i+1).padStart(2,'0')}  ${a.q}</span><span class="${a.correct ? 'ok' : 'no'}">${a.correct ? 'caged' : 'escaped'}</span></li>`
+        ).join('');
+
+        el('accoPanelNew').style.display = 'none';
+        renderNewAccolades(currentNewAccolades);
+
+        populateTitleStats();
+        showScreen('resultsScreen');
+      }
+
+      function restart() {
+        currentMode = 'standard';
+        focusType = null;
+        showScreen('titleScreen');
+      }
+
+      async function init() {
+        const storedVersion = localStorage.getItem('smudged_version');
+        if (storedVersion !== APP_VERSION) {
+          localStorage.clear();
+          localStorage.setItem('smudged_version', APP_VERSION);
+        }
+        allQuestions = await loadQuestionBank();
+        el('bankCount').textContent = allQuestions.length;
+        populateTitleStats();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
